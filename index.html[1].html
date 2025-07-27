@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>YELA TEC - Versión Web</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <h1>??? YELA TEC</h1>
+    <p>Educación ecológica con guías interactivos</p>
+  </header>
+
+  <main>
+    <section id="bienvenida">
+      <p>Bienvenido a YELA TEC. Elige tu rol para continuar:</p>
+      <button onclick="mostrarLogin()">?? Docente</button>
+      <button onclick="accesoEstudiante()">?? Estudiante</button>
+    </section>
+
+    <section id="login" style="display: none;">
+      <h3>?? Ingreso seguro</h3>
+      <input type="password" id="clave" placeholder="Ingresa la clave" />
+      <button onclick="verificarClave()">Ingresar</button>
+      <p id="mensajeClave"></p>
+    </section>
+
+    <section id="menuDocente" style="display: none;">
+      <h2>????? Menú de Docentes</h2>
+      <button onclick="mostrarPanel()">?? Ver seguimiento</button>
+      <button onclick="mostrarConfig()">?? Configuración</button>
+      <button onclick="cerrarSesion()">?? Cerrar sesión</button>
+    </section>
+
+    <section id="configClave" style="display: none;">
+      <h3>Cambiar clave de acceso</h3>
+      <input type="password" id="nuevaClave" placeholder="Nueva clave" />
+      <button onclick="confirmarCambioClave()">Confirmar cambio</button>
+      <p id="msgCambio"></p>
+    </section>
+
+    <section id="panel" style="display: none;">
+      <h3>Seguimiento de actividades</h3>
+      <ul>
+        <li>??? Aves vistas: 4</li>
+        <li>?? Tiempo de sesión: 12 minutos</li>
+        <li>?? Interacciones: 10</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 YELA TEC. Cuidando la fauna con tecnología.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
