@@ -1,138 +1,69 @@
 
 body {
   margin: 0;
-  padding: 0;
-  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-  background-size: 400% 400%;
-  animation: fondoAnimado 15s ease infinite;
   font-family: 'Segoe UI', sans-serif;
-  color: #fff;
+  background: linear-gradient(to bottom, #0f2027, #203a43, #2c5364);
+  color: white;
   text-align: center;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-@keyframes fondoAnimado {
-  0% {background-position: 0% 50%;}
-  50% {background-position: 100% 50%;}
-  100% {background-position: 0% 50%;}
 }
 
 .intro {
-  animation: fadeInDown 2s ease forwards;
-  margin-bottom: 30px;
-}
-
-@keyframes fadeInDown {
-  from {
-    opacity: 0;
-    transform: translateY(-50px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  animation: fadeIn 2s ease-out;
+  padding: 50px 0;
 }
 
 .logo {
-  font-size: 5rem;
-  font-weight: 900;
-  letter-spacing: 6px;
-  color: rgba(255, 0, 0, 0.75);
-  text-shadow:
-    0 0 10px #ff0000,
-    0 0 20px #ff4d4d,
-    0 0 30px #ff1a1a,
-    0 0 40px #ff0000,
-    0 0 70px #ff0000;
-  background:
-    linear-gradient(135deg, rgba(255,0,0,0.4), rgba(255,0,0,0.8));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  position: relative;
-  text-align: center;
-  filter: drop-shadow(0 0 3px #ff0000);
+  font-size: 3rem;
+  color: rgba(255, 255, 255, 0.8);
+  text-shadow: 0 0 10px #00f0ff, 0 0 20px #00f0ff;
+  font-weight: bold;
+  letter-spacing: 2px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.logo:hover {
+  transform: scale(1.05);
 }
 
 .menu {
   display: flex;
-  flex-direction: column;
-  gap: 20px;
-  width: 240px;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-top: 30px;
 }
 
 .menu button {
-  background: rgba(255, 215, 0, 0.85);
-  border: 2px solid #b8860b;
+  background: #00c6ff;
+  background: linear-gradient(to right, #0072ff, #00c6ff);
+  border: none;
+  padding: 15px 25px;
+  font-size: 1rem;
   border-radius: 12px;
-  color: #2b1b00;
-  font-size: 1.2rem;
-  padding: 12px 0;
+  color: white;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
   cursor: pointer;
-  font-weight: 700;
-  box-shadow: 0 4px 10px #b8860b;
-  transition: background 0.3s ease, transform 0.2s ease;
+  transition: transform 0.2s ease, background 0.3s ease;
 }
 
 .menu button:hover {
-  background: #ffd700;
   transform: scale(1.05);
-  color: #000;
+  background: linear-gradient(to right, #00c6ff, #0072ff);
 }
 
 #login {
   margin-top: 30px;
-  background: rgba(0, 0, 0, 0.3);
-  padding: 25px 15px;
-  border-radius: 15px;
-  width: 260px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  box-shadow: 0 0 20px #ff0000aa;
 }
 
-#login h2 {
-  margin-bottom: 15px;
-  font-size: 1.8rem;
-  font-weight: 700;
-  color: #ff3333;
-  text-shadow: 0 0 8px #ff4d4d;
-}
-
-#login input {
-  width: 100%;
+input[type="password"] {
   padding: 10px;
-  border-radius: 8px;
-  border: none;
   font-size: 1rem;
-  margin-bottom: 15px;
-  background: rgba(255, 255, 255, 0.2);
-  color: #fff;
-  text-align: center;
-}
-
-#login input::placeholder {
-  color: #eee;
-}
-
-#login button {
-  background: #ff4500;
-  border: none;
-  padding: 12px 0;
-  width: 100%;
-  font-weight: 700;
-  font-size: 1.2rem;
   border-radius: 8px;
-  cursor: pointer;
-  color: #fff;
-  box-shadow: 0 0 12px #ff6347;
-  transition: background 0.3s ease;
+  border: none;
+  margin-bottom: 10px;
 }
 
-#login button:hover {
-  background: #ff6347;
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
 }
