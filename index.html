@@ -4,25 +4,97 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>YELA TEC WEB</title>
-  <link rel="stylesheet" href="styles.css" />
+  <title>YELA TEC Web 2025</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      height: 100%;
+      font-family: Arial, sans-serif;
+      color: gold;
+    }
+    canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: -1;
+    }
+    #contenido {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      z-index: 10;
+    }
+    h1 {
+      font-size: 60px;
+      color: rgba(255, 215, 0, 0.9);
+      text-shadow: 2px 2px 8px #b22222;
+    }
+    #botones-usuario button {
+      padding: 12px 30px;
+      margin: 10px;
+      font-size: 18px;
+      border-radius: 8px;
+      border: none;
+      background: #b22222;
+      color: gold;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 0 10px gold;
+      transition: transform 0.2s ease;
+    }
+    #botones-usuario button:hover {
+      transform: scale(1.1);
+    }
+  </style>
 </head>
 <body>
-
-  <div id="logo" style="text-align: center; margin-top: 20px;">
-    <img src="logo-yela-3d.png" alt="YELA TEC" style="width: 200px;" />
+  <div id="contenido">
+    <h1>YELA TEC</h1>
+    <div id="botones-usuario">
+      <button id="btn-docente">Docente</button>
+      <button id="btn-estudiante">Estudiante</button>
+    </div>
   </div>
 
-  <div id="botones-usuario" style="text-align: center; margin-top: 30px;">
-    <button id="btn-docente" class="btn-principal">Docente</button>
-    <button id="btn-estudiante" class="btn-principal">Estudiante</button>
-  </div>
+  <!-- Librería Three.js -->
+  <script src="https://cdn.jsdelivr.net/npm/three@0.150.1/build/three.min.js"></script>
 
-  <div id="login" style="display: none; text-align: center; margin-top: 30px;">
-    <input type="password" id="clave" placeholder="Clave de acceso" style="padding: 10px; font-size: 16px;" />
-    <button onclick="verificarClave()" style="padding: 10px 20px; font-size: 16px; margin-left: 10px;">Entrar</button>
-  </div>
+  <!-- Fondo animado con Three.js -->
+  <script>
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
+    const renderer = new THREE.WebGLRenderer({ alpha: true });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    document.body.appendChild(renderer.domElement);
 
-  <script src="script.js"></script>
+    const geometry = new THREE.TorusKnotGeometry(10, 3, 100, 16);
+    const material = new THREE.MeshStandardMaterial({ color: 0xffd700, metalness: 0.8, roughness: 0.2 });
+    const torusKnot = new THREE.Mesh(geometry, material);
+    scene.add(torusKnot);
+
+    const light = new THREE.PointLight(0xffffff, 1, 100);
+    light.position.set(20, 20, 20);
+    scene.add(light);
+
+    camera.position.z = 40;
+
+    function animate() {
+      requestAnimationFrame(animate);
+      torusKnot.rotation.x += 0.01;
+      torusKnot.rotation.y += 0.01;
+      renderer.render(scene, camera);
+    }
+    animate();
+
+    window.addEventListener('resize', () => {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    });
+  </script>
 </body>
 </html>
