@@ -1,56 +1,80 @@
 
-let idioma = "es";
+let idiomaActual = 'es';
+let claveActual = 'docente.YELA.TEC.2025';
 
-function cambiarIdioma(lang) {
-  idioma = lang;
+function cambiarIdioma() {
+  const selector = document.getElementById("idioma");
+  idiomaActual = selector.value;
 
-  if (lang === "es") {
-    document.getElementById("titulo").innerText = "👩‍🏫 YELA TEC";
-    document.getElementById("subtitulo").innerText = "Selecciona tu rol y tu idioma";
-    document.getElementById("btnDocente").innerText = "👩‍🏫 Docente";
-    document.getElementById("btnEstudiante").innerText = "👶 Estudiante";
-    document.getElementById("entradaTexto").placeholder = "Escribe tu opción...";
+  if (idiomaActual === "es") {
+    document.querySelector("h1").textContent = "Bienvenidos a YELA TEC";
+    document.querySelector("button:nth-of-type(1)").textContent = "👩‍🏫 Docente";
+    document.querySelector("button:nth-of-type(2)").textContent = "🧒 Estudiante";
+    document.getElementById("bienvenida").textContent = "Abajo en el menú puedes elegir tu rol";
   } else {
-    document.getElementById("titulo").innerText = "👩‍🏫 YELA TEC";
-    document.getElementById("subtitulo").innerText = "Choose your role and language";
-    document.getElementById("btnDocente").innerText = "👩‍🏫 Teacher";
-    document.getElementById("btnEstudiante").innerText = "👶 Student";
-    document.getElementById("entradaTexto").placeholder = "Type your option...";
+    document.querySelector("h1").textContent = "Welcome to YELA TEC";
+    document.querySelector("button:nth-of-type(1)").textContent = "👩‍🏫 Teacher";
+    document.querySelector("button:nth-of-type(2)").textContent = "🧒 Student";
+    document.getElementById("bienvenida").textContent = "Below in the menu you can choose your role";
   }
 }
 
-function hablar(rol) {
-  const mensaje = {
-    es: rol === "docente" ? "Bienvenido docente. Accediendo a tu entorno." : "Hola estudiante. Preparando tu aventura.",
-    en: rol === "docente" ? "Welcome teacher. Loading your tools." : "Hello student. Get ready for your journey."
-  };
-
-  const finalText = mensaje[idioma];
-  document.getElementById("mensajeFinal").innerText = finalText;
-
-  const utter = new SpeechSynthesisUtterance(finalText);
-  utter.lang = idioma === "es" ? "es-ES" : "en-US";
-  speechSynthesis.speak(utter);
-}
-
-function detectarTexto(valor) {
-  valor = valor.toLowerCase();
-  if (valor.includes("docente") || valor.includes("teacher")) {
-    hablar("docente");
-  } else if (valor.includes("estudiante") || valor.includes("student")) {
-    hablar("estudiante");
+// Mostrar login si elige docente
+function mostrarLogin() {
+  const clave = prompt("Ingresa la clave de acceso para docentes:");
+  if (clave === claveActual) {
+    alert(idiomaActual === "es" ? "Acceso docente concedido ✅" : "Teacher access granted ✅");
+    // Redirigir o mostrar menú especial
+  } else {
+    alert(idiomaActual === "es" ? "Clave incorrecta 🚫" : "Incorrect key 🚫");
   }
 }
 
-function reconocerVoz() {
+// Función principal para escuchar comandos de voz
+function iniciarReconocimientoVoz() {
   const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-  const reconocimiento = new SpeechRecognition();
-  reconocimiento.lang = idioma === "es" ? "es-ES" : "en-US";
-  reconocimiento.start();
 
-  reconocimiento.onresult = function (event) {
-    const texto = event.results[0][0].transcript.toLowerCase();
-    document.getElementById("entradaTexto").value = texto;
-    detectarTexto(texto);
+  if (!SpeechRecognition) {
+    alert("Tu navegador no soporta reconocimiento de voz.");
+    return;
+  }
+
+  const recognition = new SpeechRecognition();
+  recognition.lang = idiomaActual === 'es' ? 'es-ES' : 'en-US';
+  recognition.interimResults = false;
+  recognition.maxAlternatives = 1;
+
+  recognition.start();
+
+  recognition.onresult = (event) => {
+    const resultado = event.results[0][0].transcript.toLowerCase();
+
+    if (idiomaActual === 'es') {
+      if (resultado.includes("docente")) {
+        mostrarLogin();
+      } else if (resultado.includes("estudiante")) {
+        alert("Modo estudiante activado 🧒");
+      } else {
+        alert("Comando no reconocido.");
+      }
+    } else {
+      if (resultado.includes("teacher")) {
+        mostrarLogin();
+      } else if (resultado.includes("student")) {
+        alert("Student mode activated 🧒");
+      } else {
+        alert("Command not recognized.");
+      }
+    }
+  };
+
+  recognition.onerror = (event) => {
+    console.error("Error de reconocimiento:", event.error);
+    alert("Error de reconocimiento de voz. Intenta de nuevo.");
   };
 }
+
+// Arranca con el idioma por defecto
+window.onload = () => {
+  cambiarIdioma();
+};
