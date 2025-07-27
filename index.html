@@ -2,31 +2,40 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>YELA TEC - Bilingüe</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>YELA TEC 2025</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <div class="container">
+  <header>
     <h1 id="titulo">Bienvenidos a YELA TEC</h1>
-
-    <div class="language-switch">
+    <div class="selector-idioma">
       <label for="idioma">🌐 Idioma / Language:</label>
       <select id="idioma" onchange="cambiarIdioma()">
         <option value="es">Español</option>
         <option value="en">English</option>
       </select>
-      <button onclick="reconocerIdioma()">🎤 Cambiar por voz</button>
+    </div>
+  </header>
+
+  <main>
+    <p id="subtitulo">Por favor elige tu rol:</p>
+
+    <div class="botones">
+      <button onclick="accederComo('docente')" id="btnDocente">👩‍🏫 Docente</button>
+      <button onclick="accederComo('estudiante')" id="btnEstudiante">🧒 Estudiante</button>
     </div>
 
-    <div class="menu">
-      <button onclick="seleccionar('docente')" id="docenteBtn">👩‍🏫 Docente</button>
-      <button onclick="seleccionar('estudiante')" id="estudianteBtn">🧒 Estudiante</button>
+    <div class="voz">
+      <button onclick="activarMicrofono()">🎙️ Hablar</button>
+      <p id="textoEscuchado"></p>
     </div>
+  </main>
 
-    <p id="bienvenida">Abajo en el menú elige tu rol</p>
-  </div>
+  <footer>
+    <p>© 2025 YELA TEC. Todos los derechos reservados.</p>
+  </footer>
 
   <script src="script.js"></script>
 </body>
