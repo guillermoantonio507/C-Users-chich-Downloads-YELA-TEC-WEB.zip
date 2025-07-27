@@ -5,25 +5,28 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>YELA TEC</title>
-  <link rel="stylesheet" href="styles.css"/>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <div class="contenedor-principal">
-    <h1 class="titulo-yela">YELA TEC</h1>
+  <div class="intro">
+    <h1 class="logo">YELA TEC</h1>
+  </div>
 
-    <div class="idiomas">
-      <button onclick="cambiarIdioma('es')">Español</button>
-      <button onclick="cambiarIdioma('en')">English</button>
-    </div>
+  <div class="menu-container">
+    <button class="menu-btn" onclick="mostrarLogin()">👩‍🏫 Docente</button>
+    <button class="menu-btn" onclick="modoEstudiante()">👧 Estudiante</button>
+    <button class="menu-btn" onclick="modoTexto()">Texto</button>
+    <button class="menu-btn" onclick="activarMicrofono()">🎤 Micrófono</button>
+    <select id="idioma" onchange="cambiarIdioma()">
+      <option value="es">Español</option>
+      <option value="en">English</option>
+    </select>
+  </div>
 
-    <div class="menu-opciones">
-      <button onclick="modoDocente()">👩‍🏫 Docente</button>
-      <button onclick="modoEstudiante()">👦 Estudiante</button>
-      <button onclick="entradaTexto()">⌨ Texto</button>
-      <button onclick="activarMicrofono()">🎤 Micrófono</button>
-    </div>
-
-    <div id="resultado"></div>
+  <div id="login" style="display:none;">
+    <h2>Login Docente</h2>
+    <input type="password" id="clave" placeholder="Clave secreta">
+    <button onclick="verificarClave()">Entrar</button>
   </div>
 
   <script src="script.js"></script>
