@@ -1,68 +1,93 @@
 
-body {
+* {
   margin: 0;
   padding: 0;
-  font-family: "Segoe UI", sans-serif;
-  background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
-  color: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  text-align: center;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
 }
 
-.contenedor {
-  background: rgba(255, 255, 255, 0.05);
+body {
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  color: #ffffff;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.08);
   padding: 40px;
   border-radius: 20px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.6);
-  max-width: 400px;
-  width: 100%;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+  width: 90%;
+  max-width: 500px;
 }
 
 h1 {
-  font-size: 2.2em;
-  margin-bottom: 10px;
-  color: #ffcc00;
-  text-shadow: 1px 1px 4px #000;
+  font-size: 2.4em;
+  margin-bottom: 20px;
+  color: #00ffe7;
+  text-shadow: 2px 2px 6px rgba(0, 255, 231, 0.5);
 }
 
-p {
-  font-size: 1em;
-  margin: 10px 0;
+.language-switch {
+  margin: 20px 0;
 }
 
-.botones button,
-.idioma-toggle button,
-.voz-toggle button {
-  background: #ffd700;
-  color: #000;
+select, button {
+  padding: 10px 15px;
+  margin: 10px 5px;
   border: none;
-  padding: 12px 18px;
-  border-radius: 12px;
-  margin: 10px;
-  cursor: pointer;
-  font-weight: bold;
-  transition: 0.3s;
-}
-
-.botones button:hover,
-.idioma-toggle button:hover,
-.voz-toggle button:hover {
-  background: #ffa500;
-}
-
-#entradaTexto {
-  padding: 10px;
-  width: 80%;
   border-radius: 10px;
-  border: none;
-  margin-top: 10px;
+  background-color: #00c9a7;
+  color: #fff;
+  font-size: 1em;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 5px 15px rgba(0, 255, 231, 0.2);
+  cursor: pointer;
 }
 
-.mensaje {
-  margin-top: 20px;
+button:hover, select:hover {
+  background-color: #00bfa5;
+}
+
+.menu {
+  margin-top: 30px;
+}
+
+.menu button {
+  width: 40%;
+  min-width: 130px;
+  font-weight: bold;
+  background-color: #009688;
+}
+
+.menu button:hover {
+  background-color: #00796b;
+}
+
+#bienvenida {
+  margin-top: 25px;
   font-size: 1.1em;
-  color: #00ffcc;
+  color: #ddd;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.4);
+}
+
+/* Responsive */
+@media (max-width: 500px) {
+  h1 {
+    font-size: 1.8em;
+  }
+
+  .menu button {
+    width: 80%;
+    margin: 10px 0;
+  }
+
+  select, button {
+    width: 90%;
+    margin: 8px auto;
+  }
 }
