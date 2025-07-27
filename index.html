@@ -3,40 +3,36 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>YELA TEC WEB 2025</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>YELA TEC - Plataforma Educativa</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <header class="encabezado">
-    <h1 class="titulo-principal">YELA TEC WEB 2025</h1>
-    <nav class="menu">
-      <ul>
-        <li><a href="#">Inicio</a></li>
-        <li><a href="#">Explorar</a></li>
-        <li><a href="#">Docentes</a></li>
-        <li><a href="#">Acerca</a></li>
-      </ul>
-    </nav>
+  <header>
+    <h1 aria-label="Título principal YELA TEC">YELA TEC</h1>
   </header>
 
-  <main class="contenido">
-    <section class="bienvenida" id="bienvenida">
-      <h2>Bienvenido a YELA TEC</h2>
-      <p>Una app educativa para descubrir aves, cuidar el planeta y aprender jugando.</p>
-      <button onclick="reproducirBienvenida()">Escuchar Bienvenida</button>
-    </section>
+  <nav class="menu">
+    <button id="btn-docente" aria-haspopup="true" aria-expanded="false" aria-controls="menu-docente">👩‍🏫 Docente</button>
+    <button id="btn-estudiante" aria-haspopup="true" aria-expanded="false" aria-controls="menu-estudiante">👨‍🎓 Estudiante</button>
+  </nav>
 
-    <section id="login" style="display:none;">
-      <h3>Acceso Docente</h3>
-      <input type="password" id="clave" placeholder="Clave secreta" />
-      <button onclick="verificarClave()">Entrar</button>
-    </section>
-  </main>
+  <!-- Menú oculto para docentes -->
+  <section id="menu-docente" class="menu-oculto" role="menu" aria-label="Menú docente">
+    <h2>Menú Docente</h2>
+    <ul>
+      <li><button id="btn-login-docente">Ingresar con clave</button></li>
+      <li><button id="btn-cerrar-docente">Cerrar menú</button></li>
+    </ul>
+  </section>
 
-  <footer class="pie">
-    <p>&copy; 2025 YELA TEC. Todos los derechos reservados.</p>
-  </footer>
+  <!-- Menú para estudiantes -->
+  <section id="menu-estudiante" class="menu-oculto" role="menu" aria-label="Menú estudiante">
+    <h2>Menú Estudiante</h2>
+    <p>¡Bienvenido! Usa el micrófono para hablar con YELA.</p>
+    <button id="btn-mic">🎤 Activar micrófono</button>
+    <div id="texto-voz" aria-live="polite" aria-atomic="true"></div>
+  </section>
 
   <script src="script.js"></script>
 </body>
