@@ -1,33 +1,39 @@
 
-function mostrarLogin() {
-  document.getElementById('login').style.display = 'flex';
-  document.getElementById('estudiante').style.display = 'none';
-}
+const btnDocente = document.getElementById('btn-docente');
+const btnEstudiante = document.getElementById('btn-estudiante');
+const panelDocente = document.getElementById('login-docente');
+const panelEstudiante = document.getElementById('area-estudiante');
+const btnLogin = document.getElementById('btn-login');
+const btnMic = document.getElementById('btn-mic');
+const textoReconocido = document.getElementById('texto-reconocido');
 
-function modoEstudiante() {
-  document.getElementById('estudiante').style.display = 'flex';
-  document.getElementById('login').style.display = 'none';
-  document.getElementById('mensajeAudio').textContent = '';
-}
+btnDocente.addEventListener('click', () => {
+  panelDocente.classList.remove('oculto');
+  panelEstudiante.classList.add('oculto');
+  textoReconocido.textContent = '';
+});
 
-function verificarClave() {
-  const clave = document.getElementById('clave').value;
+btnEstudiante.addEventListener('click', () => {
+  panelEstudiante.classList.remove('oculto');
+  panelDocente.classList.add('oculto');
+  textoReconocido.textContent = '';
+});
+
+btnLogin.addEventListener('click', () => {
+  const clave = document.getElementById('clave').value.trim();
   if (clave === 'docente.YELA.TEC.2025') {
-    alert('Acceso concedido. Bienvenido Docente.');
-    // Aquí agrega panel o funcionalidad docente
+    alert('✔️ Acceso concedido. Bienvenido Docente.');
+    // Aquí puedes mostrar paneles extra o funcionalidad docente
   } else {
-    alert('Clave incorrecta. Intenta de nuevo.');
+    alert('❌ Clave incorrecta, intenta de nuevo.');
   }
-}
+});
 
-function activarMicrofono() {
-  const mensajeAudio = document.getElementById('mensajeAudio');
-
+btnMic.addEventListener('click', () => {
   if (!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)) {
-    mensajeAudio.textContent = '❌ Tu navegador no soporta reconocimiento de voz.';
+    textoReconocido.textContent = '❌ Tu navegador no soporta reconocimiento de voz.';
     return;
   }
-
   const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
   const recognition = new SpeechRecognition();
   recognition.lang = 'es-ES';
@@ -35,14 +41,14 @@ function activarMicrofono() {
   recognition.maxAlternatives = 1;
 
   recognition.start();
-  mensajeAudio.textContent = '🎧 Escuchando...';
+  textoReconocido.textContent = '🎧 Escuchando...';
 
   recognition.onresult = (event) => {
     const texto = event.results[0][0].transcript;
-    mensajeAudio.textContent = `🎙️ Detectado: "${texto}"`;
+    textoReconocido.textContent = `🎙️ Detectado: "${texto}"`;
   };
 
   recognition.onerror = (event) => {
-    mensajeAudio.textContent = `❌ Error: ${event.error}`;
+    textoReconocido.textContent = `❌ Error: ${event.error}`;
   };
-}
+});
