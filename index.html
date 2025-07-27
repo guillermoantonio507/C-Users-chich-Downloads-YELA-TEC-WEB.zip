@@ -1,14 +1,36 @@
 
-<button onclick="mostrarLogin()">👩‍🏫 Docente</button>
-<button onclick="modoEstudiante()">👧 Estudiante</button>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>YELA TEC</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
 
-<div id="login" style="display:none;">
-  <input type="password" id="clave" placeholder="Ingrese clave docente" />
-  <button onclick="verificarClave()">Entrar</button>
-</div>
+  <main class="container">
 
-<div id="estudiante" style="display:none;">
-  <textarea placeholder="Escribe tu mensaje o pregunta..."></textarea>
-  <button onclick="activarMicrofono()">🎤 Hablar</button>
-  <p id="mensajeAudio"></p>
-</div>
+    <h1 class="titulo-3d">YELA TEC</h1>
+
+    <nav class="menu">
+      <button id="btn-docente">👩‍🏫 Docente</button>
+      <button id="btn-estudiante">👧 Estudiante</button>
+    </nav>
+
+    <section id="login-docente" class="panel oculto">
+      <input type="password" id="clave" placeholder="Ingrese clave docente" />
+      <button id="btn-login">Entrar</button>
+    </section>
+
+    <section id="area-estudiante" class="panel oculto">
+      <textarea placeholder="Escribe aquí..." rows="5"></textarea>
+      <button id="btn-mic">🎤 Hablar</button>
+      <p id="texto-reconocido"></p>
+    </section>
+
+  </main>
+
+<script src="script.js"></script>
+</body>
+</html>
