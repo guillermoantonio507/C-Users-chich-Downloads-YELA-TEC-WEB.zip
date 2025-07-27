@@ -2,46 +2,41 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>YELA TEC</title>
-<link rel="stylesheet" href="styles.css" />
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>YELA TEC 2025</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <div id="bienvenida">
+    <h1 id="titulo">Bienvenidos a YELA TEC</h1>
+    <p id="subtitulo">Abajo en el menú elige tu rol</p>
 
-<header>
-  <h1 class="logo">YELA TEC</h1>
-  <div class="language-switch">
-    <button id="btn-es" class="active">🌐 Español</button>
-    <button id="btn-en">🇺🇸 English</button>
+    <div class="menu">
+      <button onclick="mostrarLogin('docente')">🎓 Docente</button>
+      <button onclick="mostrarLogin('estudiante')">🧒 Estudiante</button>
+    </div>
+
+    <div id="selector-idioma">
+      <label for="idioma">🌐 Language:</label>
+      <select id="idioma" onchange="cambiarIdioma()">
+        <option value="es">Español</option>
+        <option value="en">English</option>
+      </select>
+    </div>
+
+    <div id="voz-control">
+      <button onclick="reconocerVoz()">🎙️ Activar micrófono</button>
+    </div>
   </div>
-</header>
 
-<nav class="menu">
-  <button id="btn-docente">👨‍🏫 Docente</button>
-  <button id="btn-estudiante">🧒 Estudiante</button>
-  <button id="btn-texto">⌨️ Texto</button>
-  <button id="btn-microfono">🎤 Micrófono</button>
-</nav>
+  <div id="login" style="display:none;">
+    <input type="password" id="clave" placeholder="Introduce la clave">
+    <button onclick="verificarClave()">Entrar</button>
+    <p id="errorClave" style="color:red;"></p>
+  </div>
 
-<section id="login" class="login-box" style="display:none;">
-  <h2 id="login-titulo">Acceso Docente</h2>
-  <input type="password" id="clave" placeholder="Clave secreta" />
-  <button id="btn-ingresar">Entrar</button>
-  <p id="login-error"></p>
-</section>
-
-<section id="texto-input" class="texto-box" style="display:none;">
-  <h2 id="texto-titulo">Entrada de texto</h2>
-  <textarea id="input-texto" rows="4" placeholder="Escribe aquí..."></textarea>
-  <button id="btn-enviar-texto">Enviar</button>
-  <p id="texto-respuesta"></p>
-</section>
-
-<section id="respuesta-voz" style="display:none;">
-  <p id="texto-voz"></p>
-</section>
-
-<script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
