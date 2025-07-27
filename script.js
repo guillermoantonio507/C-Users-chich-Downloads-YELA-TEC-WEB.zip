@@ -1,48 +1,48 @@
 
-function cambiarIdioma(idioma) {
-  const textos = {
-    es: {
-      docente: "👩‍🏫 Docente",
-      estudiante: "👦 Estudiante",
-      texto: "⌨ Texto",
-      microfono: "🎤 Micrófono",
-    },
-    en: {
-      docente: "👩‍🏫 Teacher",
-      estudiante: "👦 Student",
-      texto: "⌨ Text",
-      microfono: "🎤 Microphone",
-    }
-  };
+let claveActual = "docente.YELA.TEC.2025";
 
-  const menu = document.querySelectorAll(".menu-opciones button");
-  const keys = ["docente", "estudiante", "texto", "microfono"];
-
-  menu.forEach((btn, i) => {
-    btn.innerText = textos[idioma][keys[i]];
-  });
+function mostrarLogin() {
+  document.getElementById("login").style.display = "block";
 }
 
-function modoDocente() {
-  document.getElementById("resultado").innerText = "Modo Docente activado";
+function verificarClave() {
+  const clave = document.getElementById("clave").value;
+  if (clave === claveActual) {
+    alert("Acceso docente concedido.");
+    // Lógica para abrir módulo docente
+  } else {
+    alert("Clave incorrecta.");
+  }
 }
 
 function modoEstudiante() {
-  document.getElementById("resultado").innerText = "Modo Estudiante activado";
+  alert("Modo estudiante activado.");
+  // Aquí puedes redirigir o mostrar el contenido del estudiante
 }
 
-function entradaTexto() {
-  const entrada = prompt("Escribe tu mensaje:");
-  document.getElementById("resultado").innerText = `Texto ingresado: ${entrada}`;
+function modoTexto() {
+  const texto = prompt("Escribe tu pregunta:");
+  alert("Texto ingresado: " + texto);
 }
 
 function activarMicrofono() {
-  const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
-  recognition.lang = "es-ES";
-  recognition.start();
-
+  if (!('webkitSpeechRecognition' in window)) {
+    alert("Tu navegador no soporta reconocimiento de voz.");
+    return;
+  }
+  const recognition = new webkitSpeechRecognition();
+  recognition.lang = document.getElementById("idioma").value === "en" ? "en-US" : "es-ES";
   recognition.onresult = function (event) {
-    const texto = event.results[0][0].transcript;
-    document.getElementById("resultado").innerText = `Reconocido: ${texto}`;
+    const resultado = event.results[0][0].transcript;
+    alert("Has dicho: " + resultado);
   };
+  recognition.onerror = function () {
+    alert("Error al reconocer la voz.");
+  };
+  recognition.start();
+}
+
+function cambiarIdioma() {
+  const idioma = document.getElementById("idioma").value;
+  alert("Idioma cambiado a: " + (idioma === "en" ? "English" : "Español"));
 }
