@@ -1,71 +1,54 @@
 
-document.addEventListener("DOMContentLoaded", function () {
-  const btnDocente = document.getElementById("btnDocente");
-  const btnEstudiante = document.getElementById("btnEstudiante");
-  const contenedorTexto = document.getElementById("contenedorTexto");
-  const contenedorBotones = document.getElementById("contenedorBotones");
-  const microfono = document.getElementById("microfono");
-  const inputTexto = document.getElementById("inputTexto");
+// script.js — versión limpia y funcional
 
-  // Función para redirigir
-  function redireccionar(url) {
-    window.location.href = url;
+// Clave del menú oculto para docentes
+const claveCorrecta = "docente.YELA.TEC.2025";
+
+// Mostrar pantalla de login
+function mostrarLogin() {
+  document.getElementById("login").style.display = "block";
+  document.getElementById("bienvenida").style.display = "none";
+}
+
+// Verificar clave del docente
+function verificarClave() {
+  const claveIngresada = document.getElementById("clave").value;
+  if (claveIngresada === claveCorrecta) {
+    alert("✅ Acceso autorizado. Bienvenido Docente.");
+    document.getElementById("login").style.display = "none";
+    document.getElementById("contenidoDocente").style.display = "block";
+  } else {
+    alert("❌ Clave incorrecta. Intente de nuevo.");
   }
+}
 
-  // Opción docente con contraseña
-  btnDocente.addEventListener("click", function () {
-    const clave = prompt("Ingresa la clave de acceso para docentes:");
-    if (clave === "docente.YELA.TEC.2025") {
-      redireccionar("https://yela-tec-docentes.vercel.app/");
-    } else {
-      alert("Clave incorrecta.");
-    }
-  });
+// Inicializar reconocimiento de voz
+let reconocimiento;
+try {
+  const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+  reconocimiento = new SpeechRecognition();
+  reconocimiento.lang = "es-ES";
+  reconocimiento.continuous = false;
 
-  // Opción estudiante
-  btnEstudiante.addEventListener("click", function () {
-    redireccionar("https://yela-tec-estudiantes.vercel.app/");
-  });
+  reconocimiento.onresult = (event) => {
+    const resultado = event.results[0][0].transcript;
+    document.getElementById("resultadoVoz").textContent = "🎤 Tú dijiste: " + resultado;
+  };
 
-  // Entrada por texto
-  inputTexto.addEventListener("keypress", function (event) {
-    if (event.key === "Enter") {
-      procesarEntrada(inputTexto.value.toLowerCase());
-    }
-  });
+  reconocimiento.onerror = (event) => {
+    console.error("⚠️ Error en el reconocimiento de voz:", event.error);
+    document.getElementById("resultadoVoz").textContent = "❌ Error al escuchar. Intenta de nuevo.";
+  };
+} catch (e) {
+  console.warn("❗ Reconocimiento de voz no soportado en este navegador.");
+}
 
-  // Entrada por voz
-  microfono.addEventListener("click", function () {
-    if (!('webkitSpeechRecognition' in window)) {
-      alert("Lo sentimos, tu navegador no soporta reconocimiento de voz.");
-      return;
-    }
-
-    const recognition = new webkitSpeechRecognition();
-    recognition.lang = "es-ES";
-    recognition.continuous = false;
-    recognition.interimResults = false;
-
-    recognition.start();
-
-    recognition.onresult = function (event) {
-      const resultado = event.results[0][0].transcript.toLowerCase();
-      procesarEntrada(resultado);
-    };
-
-    recognition.onerror = function (event) {
-      alert("Error al reconocer la voz: " + event.error);
-    };
-  });
-
-  // Procesar entrada (voz o texto)
-  function procesarEntrada(entrada) {
-    if (entrada.includes("docente")) {
-      btnDocente.click();
-    } else if (entrada.includes("estudiante")) {
-      btnEstudiante.click();
-    } else {
-      alert("No se reconoció la opción. Por favor, di o escribe 'docente' o 'estudiante'.");
-    }
+// Activar el micrófono
+function activarMicrofono() {
+  if (reconocimiento) {
+    reconocimiento.start();
+    document.getElementById("resultadoVoz").textContent = "🎧 Escuchando...";
+  } else {
+    alert("Este navegador no soporta reconocimiento de voz.");
   }
-});
+}
