@@ -2,70 +2,74 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>YELA TEC Web 2025</title>
+  <meta charset="UTF-8">
+  <title>YELA TEC</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(145deg, #0d0d0d, #1a1a1a);
-      color: white;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
+      background: linear-gradient(to bottom, #000000, #1a1a1a);
+      color: gold;
+      text-align: center;
     }
 
-    h1 {
-      font-size: 3em;
-      color: rgba(255, 0, 0, 0.7);
-      text-shadow: 0 0 10px #ff0000, 0 0 20px #b22222, 0 0 30px #b22222;
-      margin-bottom: 20px;
+    .logo {
+      font-size: 48px;
+      font-weight: bold;
+      color: #ff0000cc;
+      text-shadow: 0 0 10px gold, 0 0 20px #ff0000;
+      margin-top: 80px;
+    }
+
+    .subtitulo {
+      font-size: 20px;
+      color: #fff;
+      margin-top: 10px;
     }
 
     #botones-usuario {
-      text-align: center;
-      margin-top: 20px;
+      margin-top: 50px;
     }
 
-    #botones-usuario button {
-      padding: 15px 40px;
+    button {
+      padding: 12px 30px;
       margin: 10px;
-      font-size: 20px;
-      border-radius: 12px;
+      font-size: 18px;
+      border-radius: 8px;
       border: none;
       background: #b22222;
       color: gold;
       font-weight: bold;
       cursor: pointer;
-      box-shadow: 0 0 10px gold, 0 0 20px rgba(255, 215, 0, 0.4);
-      transition: transform 0.2s ease, background 0.2s ease;
+      box-shadow: 0 0 10px gold;
+      transition: transform 0.3s ease;
     }
 
-    #botones-usuario button:hover {
-      transform: scale(1.05);
-      background: #cc0000;
+    button:hover {
+      transform: scale(1.1);
     }
 
     footer {
-      position: absolute;
-      bottom: 10px;
-      font-size: 12px;
-      color: #999;
+      margin-top: 100px;
+      color: #888;
+      font-size: 14px;
     }
   </style>
 </head>
 <body>
 
-  <h1>YELA TEC</h1>
+  <div class="logo">YELA TEC</div>
+  <div class="subtitulo">Tecnología educativa con corazón ecológico</div>
+
   <div id="botones-usuario">
     <button id="btn-docente">Docente</button>
     <button id="btn-estudiante">Estudiante</button>
   </div>
 
-  <footer>© 2025 YELA TEC. Todos los derechos reservados.</footer>
+  <footer>
+    © 2025 YELA TEC - Proyecto educativo sin fines de lucro
+  </footer>
 
   <script src="script.js"></script>
 </body>
