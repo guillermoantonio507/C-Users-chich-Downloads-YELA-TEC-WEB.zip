@@ -1,38 +1,48 @@
 
-function setLanguage(lang) {
-  const elements = document.querySelectorAll(".text");
-  elements.forEach((el) => {
-    const text = el.getAttribute(`data-${lang}`);
-    if (text) el.textContent = text;
+function cambiarIdioma(idioma) {
+  const textos = {
+    es: {
+      docente: "👩‍🏫 Docente",
+      estudiante: "👦 Estudiante",
+      texto: "⌨ Texto",
+      microfono: "🎤 Micrófono",
+    },
+    en: {
+      docente: "👩‍🏫 Teacher",
+      estudiante: "👦 Student",
+      texto: "⌨ Text",
+      microfono: "🎤 Microphone",
+    }
+  };
+
+  const menu = document.querySelectorAll(".menu-opciones button");
+  const keys = ["docente", "estudiante", "texto", "microfono"];
+
+  menu.forEach((btn, i) => {
+    btn.innerText = textos[idioma][keys[i]];
   });
 }
 
 function modoDocente() {
-  alert("Modo docente activado.");
+  document.getElementById("resultado").innerText = "Modo Docente activado";
 }
 
 function modoEstudiante() {
-  alert("Modo estudiante activado.");
+  document.getElementById("resultado").innerText = "Modo Estudiante activado";
 }
 
-function modoTexto() {
-  const input = prompt("Escribe tu instrucción:");
-  if (input) {
-    alert("Texto recibido: " + input);
-  }
+function entradaTexto() {
+  const entrada = prompt("Escribe tu mensaje:");
+  document.getElementById("resultado").innerText = `Texto ingresado: ${entrada}`;
 }
 
-function modoMicrofono() {
+function activarMicrofono() {
   const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
-  recognition.lang = document.documentElement.lang;
+  recognition.lang = "es-ES";
   recognition.start();
 
   recognition.onresult = function (event) {
-    const result = event.results[0][0].transcript;
-    alert("Reconocido: " + result);
-  };
-
-  recognition.onerror = function (event) {
-    alert("Error: " + event.error);
+    const texto = event.results[0][0].transcript;
+    document.getElementById("resultado").innerText = `Reconocido: ${texto}`;
   };
 }
