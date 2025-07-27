@@ -1,42 +1,81 @@
 
-/* Fondo elegante animado */
 body {
   margin: 0;
   padding: 0;
+  background: #0f0f0f;
   font-family: 'Segoe UI', sans-serif;
-  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-  background-size: 400% 400%;
-  animation: fondoAnimado 15s ease infinite;
-  color: #fff;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
+  color: white;
+  text-align: center;
 }
 
-@keyframes fondoAnimado {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-/* Intro con logo animado */
 .intro {
-  animation: fadeIn 2s ease-out;
-  margin-bottom: 30px;
+  animation: fadeIn 2s ease-in-out;
+  margin-top: 5vh;
 }
 
 .logo {
-  font-size: 60px;
-  font-weight: 900;
-  background: linear-gradient(90deg, #ffdd00, #ffaa00, #ff6600);
+  font-size: 4em;
+  font-weight: bold;
+  background: linear-gradient(45deg, #00f2ff, #ff00ff, #ffd700);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  text-shadow: 0 0 15px rgba(255, 200, 0, 0.6);
-  letter-spacing: 4px;
-  animation: brilla 4s infinite alternate;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+  animation: popIn 1.5s ease forwards;
 }
 
-@keyframes brilla {
-  0%
+.menu {
+  margin-top: 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+button {
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(90deg, #3b82f6, #9333ea);
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  transform: scale(1.05);
+  background: linear-gradient(90deg, #2563eb, #7e22ce);
+}
+
+#login {
+  margin-top: 2rem;
+}
+
+input[type="password"] {
+  padding: 0.7rem;
+  border-radius: 8px;
+  border: 2px solid #888;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+}
+
+/* Animaciones */
+@keyframes popIn {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  } to {
+    opacity: 1;
+  }
+}
