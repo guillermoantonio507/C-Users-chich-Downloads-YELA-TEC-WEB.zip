@@ -1,6 +1,3 @@
-
-// script.js — versión limpia y funcional
-
 // Clave del menú oculto para docentes
 const claveCorrecta = "docente.YELA.TEC.2025";
 
