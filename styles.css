@@ -1,48 +1,68 @@
 
 body {
-  background: linear-gradient(135deg, #e1f4f3, #d3e5ff);
-  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+  padding: 0;
+  font-family: "Segoe UI", sans-serif;
+  background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
   text-align: center;
-  padding: 2em;
-  color: #222;
+}
+
+.contenedor {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+  max-width: 400px;
+  width: 100%;
 }
 
 h1 {
-  font-size: 2.5em;
-  margin-bottom: 0.3em;
-  color: #004080;
+  font-size: 2.2em;
+  margin-bottom: 10px;
+  color: #ffcc00;
+  text-shadow: 1px 1px 4px #000;
 }
 
 p {
-  font-size: 1.2em;
-  margin-bottom: 1em;
+  font-size: 1em;
+  margin: 10px 0;
 }
 
-.menu button,
-#voz-control button,
-#login button {
-  background-color: #0057b7;
-  color: white;
-  padding: 0.8em 1.5em;
-  margin: 0.5em;
+.botones button,
+.idioma-toggle button,
+.voz-toggle button {
+  background: #ffd700;
+  color: #000;
   border: none;
+  padding: 12px 18px;
   border-radius: 12px;
-  font-size: 1em;
+  margin: 10px;
   cursor: pointer;
-  box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+  font-weight: bold;
   transition: 0.3s;
 }
 
-.menu button:hover,
-#voz-control button:hover,
-#login button:hover {
-  background-color: #003f91;
+.botones button:hover,
+.idioma-toggle button:hover,
+.voz-toggle button:hover {
+  background: #ffa500;
 }
 
-#selector-idioma {
-  margin-top: 1.5em;
+#entradaTexto {
+  padding: 10px;
+  width: 80%;
+  border-radius: 10px;
+  border: none;
+  margin-top: 10px;
 }
 
-#login {
-  margin-top: 2em;
+.mensaje {
+  margin-top: 20px;
+  font-size: 1.1em;
+  color: #00ffcc;
 }
