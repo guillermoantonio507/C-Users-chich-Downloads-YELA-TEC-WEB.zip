@@ -1,54 +1,38 @@
 
-const btnDocente = document.getElementById('btn-docente');
-const btnEstudiante = document.getElementById('btn-estudiante');
-const panelDocente = document.getElementById('login-docente');
-const panelEstudiante = document.getElementById('area-estudiante');
-const btnLogin = document.getElementById('btn-login');
-const btnMic = document.getElementById('btn-mic');
-const textoReconocido = document.getElementById('texto-reconocido');
+function setLanguage(lang) {
+  const elements = document.querySelectorAll(".text");
+  elements.forEach((el) => {
+    const text = el.getAttribute(`data-${lang}`);
+    if (text) el.textContent = text;
+  });
+}
 
-btnDocente.addEventListener('click', () => {
-  panelDocente.classList.remove('oculto');
-  panelEstudiante.classList.add('oculto');
-  textoReconocido.textContent = '';
-});
+function modoDocente() {
+  alert("Modo docente activado.");
+}
 
-btnEstudiante.addEventListener('click', () => {
-  panelEstudiante.classList.remove('oculto');
-  panelDocente.classList.add('oculto');
-  textoReconocido.textContent = '';
-});
+function modoEstudiante() {
+  alert("Modo estudiante activado.");
+}
 
-btnLogin.addEventListener('click', () => {
-  const clave = document.getElementById('clave').value.trim();
-  if (clave === 'docente.YELA.TEC.2025') {
-    alert('✔️ Acceso concedido. Bienvenido Docente.');
-    // Aquí puedes mostrar paneles extra o funcionalidad docente
-  } else {
-    alert('❌ Clave incorrecta, intenta de nuevo.');
+function modoTexto() {
+  const input = prompt("Escribe tu instrucción:");
+  if (input) {
+    alert("Texto recibido: " + input);
   }
-});
+}
 
-btnMic.addEventListener('click', () => {
-  if (!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)) {
-    textoReconocido.textContent = '❌ Tu navegador no soporta reconocimiento de voz.';
-    return;
-  }
-  const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-  const recognition = new SpeechRecognition();
-  recognition.lang = 'es-ES';
-  recognition.interimResults = false;
-  recognition.maxAlternatives = 1;
-
+function modoMicrofono() {
+  const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+  recognition.lang = document.documentElement.lang;
   recognition.start();
-  textoReconocido.textContent = '🎧 Escuchando...';
 
-  recognition.onresult = (event) => {
-    const texto = event.results[0][0].transcript;
-    textoReconocido.textContent = `🎙️ Detectado: "${texto}"`;
+  recognition.onresult = function (event) {
+    const result = event.results[0][0].transcript;
+    alert("Reconocido: " + result);
   };
 
-  recognition.onerror = (event) => {
-    textoReconocido.textContent = `❌ Error: ${event.error}`;
+  recognition.onerror = function (event) {
+    alert("Error: " + event.error);
   };
-});
+}
