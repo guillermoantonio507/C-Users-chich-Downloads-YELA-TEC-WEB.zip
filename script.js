@@ -4,21 +4,40 @@ const claveCorrecta = "docente.YELA.TEC.2025";
 function mostrarLogin() {
   document.getElementById("login").style.display = "block";
   document.getElementById("bienvenida").style.display = "none";
+  document.getElementById("entradaTexto").style.display = "none";
+  document.getElementById("panelDocente").style.display = "none";
 }
 
 function verificarClave() {
-  const claveIngresada = document.getElementById("clave").value;
+  const claveIngresada = document.getElementById("clave").value.trim();
   if (claveIngresada === claveCorrecta) {
     alert("✅ Acceso autorizado. Bienvenido Docente.");
     document.getElementById("login").style.display = "none";
-    document.getElementById("contenidoDocente").style.display = "block";
+    document.getElementById("panelDocente").style.display = "block";
   } else {
     alert("❌ Clave incorrecta. Intente de nuevo.");
   }
 }
 
-let reconocimiento;
+function mostrarEntradaTexto() {
+  document.getElementById("entradaTexto").style.display = "block";
+  document.getElementById("bienvenida").style.display = "none";
+  document.getElementById("login").style.display = "none";
+  document.getElementById("panelDocente").style.display = "none";
+}
 
+function procesarTexto() {
+  const texto = document.getElementById("textoEntrada").value.trim();
+  if (!texto) {
+    alert("Por favor escribe algo.");
+    return;
+  }
+  alert("Texto recibido: " + texto);
+  // Aquí puedes integrar llamada a IA o procesamiento adicional
+}
+
+// Reconocimiento de voz
+let reconocimiento;
 try {
   const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
   reconocimiento = new SpeechRecognition();
