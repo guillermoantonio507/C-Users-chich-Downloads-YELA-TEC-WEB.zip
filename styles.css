@@ -1,66 +1,114 @@
 
-body {
+/* Estilo general */
+* {
   margin: 0;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: linear-gradient(to right, #002f4b, #dc4225);
-  color: #fff;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background: linear-gradient(to bottom right, #dff6ff, #ffffff);
+  color: #222;
+  min-height: 100vh;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 2rem;
 }
 
-.contenedor {
+/* Encabezado */
+header {
   text-align: center;
-  background-color: rgba(0, 0, 0, 0.5);
-  padding: 30px;
-  border-radius: 20px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.7);
+  margin-bottom: 2rem;
 }
 
-.titulo {
-  font-size: 3em;
-  font-weight: bold;
-  color: #ffd700;
-  margin-bottom: 10px;
+h1 {
+  font-size: 2.5rem;
+  color: #0077b6;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
 }
 
-.subtitulo {
-  font-size: 1.2em;
-  margin-bottom: 30px;
-  color: #ffddc1;
+/* Botones de idioma y micrófono */
+.language-switch {
+  margin-top: 1rem;
 }
 
+.language-switch button {
+  margin: 0.3rem;
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 10px;
+  background-color: #0096c7;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.language-switch button:hover {
+  background-color: #00b4d8;
+}
+
+/* Descripción */
+#descripcion {
+  font-size: 1.2rem;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+/* Menú de botones */
 .menu {
   display: flex;
-  gap: 20px;
   justify-content: center;
-  margin-bottom: 20px;
+  gap: 2rem;
   flex-wrap: wrap;
 }
 
 .boton {
-  background-color: #ff6f61;
-  border: none;
-  padding: 15px 25px;
-  border-radius: 12px;
+  background-color: #023e8a;
   color: white;
-  font-size: 1.1em;
+  border: none;
+  border-radius: 12px;
+  padding: 1rem 2rem;
+  font-size: 1rem;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.3s ease-in-out;
 }
 
 .boton:hover {
-  background-color: #ffa07a;
+  background-color: #0077b6;
   transform: scale(1.05);
 }
 
-.login input {
-  padding: 10px;
-  font-size: 1em;
-  margin-right: 10px;
-  border-radius: 8px;
-  border: none;
+/* Caja de login */
+.login-box {
+  display: none;
+  text-align: center;
+  margin-top: 2rem;
 }
 
-.login bu
+.login-box input {
+  padding: 0.8rem;
+  width: 220px;
+  border-radius: 8px;
+  border: 1px solid #aaa;
+  margin-right: 0.5rem;
+}
+
+.login-box button {
+  padding: 0.8rem 1.2rem;
+  background-color: #0096c7;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  margin-top: 3rem;
+  color: #555;
+  font-size: 0.9rem;
+}
