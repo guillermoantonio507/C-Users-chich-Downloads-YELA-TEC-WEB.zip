@@ -1,121 +1,42 @@
 
-/* Fondo animado e intro */
+/* Fondo elegante animado */
 body {
   margin: 0;
   padding: 0;
   font-family: 'Segoe UI', sans-serif;
-  background: linear-gradient(135deg, #020024, #090979, #00d4ff);
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
   background-size: 400% 400%;
   animation: fondoAnimado 15s ease infinite;
-  color: white;
-}
-
-@keyframes fondoAnimado {
-  0% {background-position: 0% 50%;}
-  50% {background-position: 100% 50%;}
-  100% {background-position: 0% 50%;}
-}
-
-/* Animación de entrada */
-.intro {
-  text-align: center;
-  padding: 80px 20px 40px;
-  animation: fadeInDown 2s ease-out;
-}
-
-@keyframes fadeInDown {
-  from {
-    opacity: 0;
-    transform: translateY(-50px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Título estilo 3D translúcido */
-.logo {
-  font-size: 4rem;
-  font-weight: 800;
-  color: rgba(255, 255, 255, 0.9);
-  text-shadow: 
-    2px 2px 0 #ffcc00,
-    4px 4px 0 rgba(0, 0, 0, 0.4),
-    0 0 15px rgba(255, 255, 0, 0.6);
-  letter-spacing: 4px;
-  text-transform: uppercase;
-}
-
-/* Menú principal */
-.menu {
+  color: #fff;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 15px;
-  margin-top: 30px;
-  animation: fadeInUp 2s ease;
+  justify-content: center;
+  height: 100vh;
 }
 
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(40px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+@keyframes fondoAnimado {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
-/* Botones del menú */
-.menu button {
-  background: rgba(255, 255, 255, 0.15);
-  border: 2px solid #ffcc00;
-  border-radius: 12px;
-  color: #fff;
-  font-size: 1.2rem;
-  padding: 12px 28px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  backdrop-filter: blur(8px);
+/* Intro con logo animado */
+.intro {
+  animation: fadeIn 2s ease-out;
+  margin-bottom: 30px;
 }
 
-.menu button:hover {
-  background: rgba(255, 255, 255, 0.3);
-  color: #000;
-  transform: scale(1.05);
+.logo {
+  font-size: 60px;
+  font-weight: 900;
+  background: linear-gradient(90deg, #ffdd00, #ffaa00, #ff6600);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 15px rgba(255, 200, 0, 0.6);
+  letter-spacing: 4px;
+  animation: brilla 4s infinite alternate;
 }
 
-/* Panel de login oculto */
-#login {
-  text-align: center;
-  margin-top: 40px;
-  animation: fadeIn 2s ease;
-}
-
-#login input {
-  padding: 10px;
-  font-size: 1rem;
-  border: 2px solid #ffcc00;
-  border-radius: 8px;
-  background: rgba(255, 255, 255, 0.1);
-  color: white;
-  backdrop-filter: blur(5px);
-  margin-bottom: 10px;
-}
-
-#login button {
-  background-color: #ffcc00;
-  border: none;
-  padding: 10px 20px;
-  font-weight: bold;
-  border-radius: 8px;
-  cursor: pointer;
-  color: #000;
-  transition: background 0.3s ease;
-}
-
-#login button:hover {
-  background-color: #ffe066;
-}
+@keyframes brilla {
+  0%
