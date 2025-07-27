@@ -1,69 +1,70 @@
 
-body {
+/* Reset básico */
+* {
   margin: 0;
-  font-family: 'Segoe UI', sans-serif;
-  background: linear-gradient(to bottom, #0f2027, #203a43, #2c5364);
-  color: white;
-  text-align: center;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.intro {
-  animation: fadeIn 2s ease-out;
-  padding: 50px 0;
-}
-
-.logo {
-  font-size: 3rem;
-  color: rgba(255, 255, 255, 0.8);
-  text-shadow: 0 0 10px #00f0ff, 0 0 20px #00f0ff;
-  font-weight: bold;
-  letter-spacing: 2px;
-  transition: transform 0.3s ease-in-out;
-}
-
-.logo:hover {
-  transform: scale(1.05);
-}
-
-.menu {
+/* Fondo y fuente principal */
+body {
+  font-family: 'Segoe UI Black', 'Arial Black', sans-serif;
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  color: #fff;
+  min-height: 100vh;
   display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 15px;
-  margin-top: 30px;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px;
 }
 
-.menu button {
-  background: #00c6ff;
-  background: linear-gradient(to right, #0072ff, #00c6ff);
-  border: none;
+/* Contenedor del logo */
+.logo-container {
+  perspective: 1000px;
+  margin-bottom: 50px;
+}
+
+/* Letras YELA TEC con efecto 3D translúcido */
+.logo-yela {
+  font-size: 6rem;
+  font-weight: 900;
+  letter-spacing: 0.25em;
+  position: relative;
+  color: rgba(220, 20, 60, 0.7); /* rojo rubí translúcido */
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="600" height="200"><defs><pattern id="circuits" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse"><rect width="20" height="20" fill="none"/><path d="M0 10 H20 M10 0 V20" stroke="gold" stroke-width="0.7"/></pattern></defs><rect width="600" height="200" fill="url(%23circuits)"/></svg>') repeat;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  border: 6px solid;
+  border-radius: 20px;
+  border-image-slice: 1;
+  border-image-source: linear-gradient(45deg, #ffd700, #b8860b);
+  padding: 15px 40px;
+  box-shadow:
+    inset 0 0 15px rgba(255, 215, 0, 0.8),
+    0 0 30px rgba(220, 20, 60, 0.8);
+  text-shadow:
+    0 0 5px #ffd700,
+    0 0 10px #daa520,
+    0 0 20px #b8860b;
+  transform-style: preserve-3d;
+  transform: rotateX(10deg) rotateY(-10deg);
+  user-select: none;
+}
+
+/* Menú principal */
+.menu {
+  width: 100%;
+  max-width: 480px;
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 40px;
+}
+
+/* Botones del menú */
+.menu-btn {
+  background: linear-gradient(135deg, #b8860b, #ffd700);
+  border-radius: 14px;
+  border: 2px solid #b8860b;
   padding: 15px 25px;
-  font-size: 1rem;
-  border-radius: 12px;
-  color: white;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-  cursor: pointer;
-  transition: transform 0.2s ease, background 0.3s ease;
-}
-
-.menu button:hover {
-  transform: scale(1.05);
-  background: linear-gradient(to right, #00c6ff, #0072ff);
-}
-
-#login {
-  margin-top: 30px;
-}
-
-input[type="password"] {
-  padding: 10px;
-  font-size: 1rem;
-  border-radius: 8px;
-  border: none;
-  margin-bottom: 10px;
-}
-
-@keyframes fadeIn {
-  from {opacity: 0;}
-  to {opacity: 1;}
-}
+  font-weight: 700;
+  colo
