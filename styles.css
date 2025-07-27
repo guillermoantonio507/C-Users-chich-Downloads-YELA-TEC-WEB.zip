@@ -1,75 +1,147 @@
 
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Poppins:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@900&display=swap');
 
-body {
-  font-family: 'Poppins', sans-serif;
-  background-color: #f4f7fa;
-  color: #222;
+/* Reset y básico */
+* {
   margin: 0;
   padding: 0;
-  text-align: center;
-  -webkit-font-smoothing: antialiased;
+  box-sizing: border-box;
 }
 
-h1, h2, h3 {
+body {
+  height: 100vh;
+  background: radial-gradient(circle at center, #0a0a0a 0%, #000000 80%);
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Orbitron', sans-serif;
+  position: relative;
+  color: #00f0ff;
+}
+
+/* Bokeh cinematográfico con blur */
+body::before {
+  content: "";
+  position: absolute;
+  width: 120vw;
+  height: 120vh;
+  top: -10vh;
+  left: -10vw;
+  background:
+    radial-gradient(circle at 20% 30%, rgba(0, 195, 255, 0.25), transparent 60%),
+    radial-gradient(circle at 70% 40%, rgba(255, 0, 150, 0.3), transparent 50%),
+    radial-gradient(circle at 40% 70%, rgba(255, 255, 255, 0.15), transparent 40%),
+    radial-gradient(circle at 80% 80%, rgba(0, 255, 200, 0.2), transparent 50%);
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Contenedor para el texto */
+.container {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+}
+
+/* Texto principal */
+h1 {
+  font-size: 12vw;
+  letter-spacing: 0.15em;
+  color: transparent;
+  position: relative;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* Texto traslúcido con detalles tecnológicos */
+h1::before {
+  content: 'YELA TEC';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background:
+    linear-gradient(90deg,
+      #00f0ff 0%, #0088ff 25%, #00aaff 50%, #00d0ff 75%, #00f0ff 100%);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: glowmove 8s linear infinite;
+  filter:
+    drop-shadow(0 0 6px #00f0ffaa)
+    drop-shadow(0 0 10px #00bfffcc)
+    drop-shadow(0 0 20px #00eaffdd);
+  clip-path: polygon(
+    0% 0%, 100% 0%, 100% 100%, 0% 100%,
+    20% 15%, 25% 15%, 25% 20%, 20% 20%,
+    70% 30%, 75% 30%, 75% 35%, 70% 35%,
+    50% 60%, 55% 60%, 55% 65%, 50% 65%
+  );
+  mix-blend-mode: screen;
+}
+
+/* Capa de detalles tipo circuitos */
+h1::after {
+  content: 'YELA TEC';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background:
+    repeating-linear-gradient(
+      45deg,
+      rgba(0, 255, 255, 0.15),
+      rgba(0, 255, 255, 0.15) 2px,
+      transparent 2px,
+      transparent 6px
+    ),
+    repeating-linear-gradient(
+      -45deg,
+      rgba(0, 255, 255, 0.1),
+      rgba(0, 255, 255, 0.1) 3px,
+      transparent 3px,
+      transparent 7px
+    );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 5px #00ffff99);
+  pointer-events: none;
+  mix-blend-mode: screen;
+  animation: flicker 10s infinite;
+}
+
+/* Animación del gradiente */
+@keyframes glowmove {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 200% 50%;
+  }
+}
+
+/* Animación flicker leve */
+@keyframes flicker {
+  0%, 100% {opacity: 1;}
+  50% {opacity: 0.85;}
+}
+
+/* Footer tipo barra fotográfica */
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 1920px;
+  padding: 1rem;
+  color: #00dfffcc;
   font-family: 'Orbitron', sans-serif;
   font-weight: 700;
-  color: #d60b52;
-  text-shadow: 1px 1px 2px rgba(0,0,0,0.15);
-  margin-top: 20px;
-}
-
-h1 {
-  font-size: 2.5em;
-}
-
-button, input[type="button"] {
-  font-family: 'Poppins', sans-serif;
-  background-color: #d60b52;
-  color: #fff;
-  border: none;
-  border-radius: 8px;
-  padding: 12px 20px;
-  font-size: 1em;
-  cursor: pointer;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.2);
-  transition: background-color 0.3s, transform 0.2s;
-}
-
-button:hover {
-  background-color: #b30842;
-  transform: scale(1.05);
-}
-
-input[type="text"], input[type="password"] {
-  padding: 10px;
-  width: 80%;
-  max-width: 300px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  font-family: 'Poppins', sans-serif;
-  margin-bottom: 10px;
-}
-
-#login {
-  display: none;
-  margin-top: 20px;
-}
-
-#welcome {
-  margin-top: 30px;
-  font-size: 1.2em;
-  color: #333;
-}
-
-.menu {
-  font-family: 'Orbitron', sans-serif;
-  font-size: 1.1em;
-  margin: 15px 0;
-  color: #202020;
-  padding: 10px;
-}
-
-.hidden {
-  display: none;
+  font-size: 1.1rem;
+  text-align: center;
+  backdrop-filter: saturate(180%) blur(10px);
+  background-color: rgba(0, 0, 0, 0.3);
+  box-shadow: 0 -2px 10px rgba(0, 255, 255, 0.4);
+  user-select: none;
 }
