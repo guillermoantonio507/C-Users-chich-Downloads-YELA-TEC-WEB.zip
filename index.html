@@ -2,35 +2,33 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>YELA TEC</title>
-<link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>YELA TEC</title>
+  <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
-
-  <main class="container">
-
-    <h1 class="titulo-3d">YELA TEC</h1>
-
-    <nav class="menu">
-      <button id="btn-docente">👩‍🏫 Docente</button>
-      <button id="btn-estudiante">👧 Estudiante</button>
-    </nav>
-
-    <section id="login-docente" class="panel oculto">
-      <input type="password" id="clave" placeholder="Ingrese clave docente" />
-      <button id="btn-login">Entrar</button>
-    </section>
-
-    <section id="area-estudiante" class="panel oculto">
-      <textarea placeholder="Escribe aquí..." rows="5"></textarea>
-      <button id="btn-mic">🎤 Hablar</button>
-      <p id="texto-reconocido"></p>
-    </section>
-
-  </main>
-
-<script src="script.js"></script>
+  <div class="container">
+    <h1 class="logo-text">YELA TEC</h1>
+    <div class="language-toggle">
+      <button onclick="setLanguage('es')">Español</button>
+      <button onclick="setLanguage('en')">English</button>
+    </div>
+    <div class="menu">
+      <button onclick="modoDocente()">
+        👩‍🏫 <span class="text" data-es="Docente" data-en="Teacher">Docente</span>
+      </button>
+      <button onclick="modoEstudiante()">
+        🧒 <span class="text" data-es="Estudiante" data-en="Student">Estudiante</span>
+      </button>
+      <button onclick="modoTexto()">
+        📝 <span class="text" data-es="Escribir" data-en="Write">Escribir</span>
+      </button>
+      <button onclick="modoMicrofono()">
+        🎤 <span class="text" data-es="Hablar" data-en="Speak">Hablar</span>
+      </button>
+    </div>
+  </div>
+  <script src="script.js"></script>
 </body>
 </html>
