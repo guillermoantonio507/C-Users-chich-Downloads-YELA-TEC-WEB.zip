@@ -1,106 +1,132 @@
 
-/* Fondo general con degradado suave */
+/* General */
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Segoe UI', sans-serif;
-  background: linear-gradient(135deg, #0f0f0f, #1a1a1a);
-  color: #fff;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-  overflow: hidden;
+  background: linear-gradient(135deg, #0a0f1c, #1a1f2e);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: white;
+  overflow-x: hidden;
 }
 
-/* Animación de introducción */
+/* Intro animada */
 .intro {
-  animation: fadeIn 2s ease-out;
-  margin-bottom: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  animation: fadeIn 2s ease-in-out;
+  background: linear-gradient(135deg, #000000, #1a1a1a);
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; transform: scale(0.9); }
-  to   { opacity: 1; transform: scale(1); }
-}
-
-/* LOGO estilo dorado 3D traslúcido */
 .logo {
   font-size: 4rem;
   font-weight: bold;
-  color: rgba(255, 215, 0, 0.8); /* Dorado suave traslúcido */
-  text-shadow:
-    0 0 10px rgba(255, 215, 0, 0.5),
-    0 0 20px rgba(255, 215, 0, 0.4),
-    2px 2px 6px rgba(0, 0, 0, 0.7);
-  letter-spacing: 2px;
-  text-align: center;
+  color: rgba(255, 255, 255, 0.9);
+  text-shadow: 0 0 10px rgba(255, 255, 0, 0.8), 0 0 20px rgba(255, 255, 255, 0.6);
+  letter-spacing: 5px;
+  animation: slideIn 1.5s ease-in-out;
 }
 
-/* Menú de botones */
+/* Menú principal */
 .menu {
   display: flex;
-  flex-wrap: wrap;
-  gap: 15px;
-  justify-content: center;
-  margin-top: 20px;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  gap: 1rem;
+  animation: fadeIn 2.5s ease-in;
 }
 
 .menu button {
-  padding: 15px 25px;
-  font-size: 1rem;
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
   border: none;
   border-radius: 12px;
-  background: linear-gradient(to right, #FFD700, #FFB700);
-  color: #000;
-  font-weight: bold;
+  background: linear-gradient(145deg, #1e90ff, #00bcd4);
+  color: white;
+  box-shadow: 0 6px 15px rgba(0, 188, 212, 0.4);
   cursor: pointer;
-  box-shadow: 0 4px 12px rgba(255, 215, 0, 0.3);
   transition: all 0.3s ease;
 }
 
 .menu button:hover {
+  background: linear-gradient(145deg, #00bcd4, #1e90ff);
   transform: scale(1.05);
-  box-shadow: 0 6px 16px rgba(255, 215, 0, 0.5);
+  box-shadow: 0 8px 20px rgba(0, 255, 255, 0.4);
 }
 
-/* Sección de login */
+/* Área de login */
 #login {
-  background-color: rgba(255, 255, 255, 0.05);
-  padding: 30px;
-  border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(255, 215, 0, 0.2);
   text-align: center;
-  margin-top: 30px;
+  padding: 2rem;
+  animation: fadeInUp 1s ease-in-out;
 }
 
 #login h2 {
-  color: #FFD700;
-  margin-bottom: 15px;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #00ffff;
 }
 
 #clave {
-  padding: 10px;
-  font-size: 1rem;
-  border: none;
+  padding: 0.7rem;
+  font-size: 1.1rem;
   border-radius: 8px;
-  margin-bottom: 10px;
-  width: 200px;
+  border: 1px solid #00ffff;
+  margin-bottom: 1rem;
+  background-color: #111;
+  color: white;
+  outline: none;
 }
 
 #login button {
-  padding: 10px 20px;
+  padding: 0.7rem 1.5rem;
   font-size: 1rem;
+  border-radius: 10px;
+  background-color: #00bcd4;
+  color: white;
   border: none;
-  border-radius: 8px;
-  background-color: #FFD700;
-  color: #000;
-  font-weight: bold;
   cursor: pointer;
-  transition: background 0.3s ease;
+  box-shadow: 0 5px 10px rgba(0, 255, 255, 0.3);
+  transition: 0.3s ease;
 }
 
 #login button:hover {
-  background-color: #e6c200;
+  background-color: #1e90ff;
+  box-shadow: 0 5px 15px rgba(0, 255, 255, 0.6);
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes slideIn {
+  0% { transform: translateY(-100px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes fadeInUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .logo {
+    font-size: 2.5rem;
+  }
+
+  .menu button {
+    width: 80%;
+    font-size: 1rem;
+  }
 }
