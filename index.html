@@ -3,97 +3,80 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>YELA TEC Web 2025</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>YELA TEC WEB</title>
   <style>
-    body, html {
+    body {
       margin: 0;
       padding: 0;
-      overflow: hidden;
-      height: 100%;
-      font-family: Arial, sans-serif;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom right, #000000, #1a1a1a);
       color: gold;
-    }
-    canvas {
-      position: fixed;
-      top: 0;
-      left: 0;
-      z-index: -1;
-    }
-    #contenido {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
       text-align: center;
-      z-index: 10;
     }
-    h1 {
-      font-size: 60px;
-      color: rgba(255, 215, 0, 0.9);
-      text-shadow: 2px 2px 8px #b22222;
+
+    .logo {
+      font-size: 48px;
+      font-weight: bold;
+      color: rgba(255, 0, 0, 0.8);
+      text-shadow: 0 0 10px gold, 0 0 20px red;
+      margin-top: 60px;
     }
+
+    .subtitulo {
+      font-size: 20px;
+      margin-bottom: 30px;
+      color: #ffcc00;
+      text-shadow: 0 0 5px #ff9900;
+    }
+
     #botones-usuario button {
-      padding: 12px 30px;
-      margin: 10px;
-      font-size: 18px;
-      border-radius: 8px;
+      padding: 14px 32px;
+      margin: 15px;
+      font-size: 20px;
+      border-radius: 10px;
       border: none;
       background: #b22222;
       color: gold;
       font-weight: bold;
       cursor: pointer;
-      box-shadow: 0 0 10px gold;
-      transition: transform 0.2s ease;
+      box-shadow: 0 0 15px gold;
+      transition: transform 0.2s ease, background 0.3s ease;
     }
+
     #botones-usuario button:hover {
-      transform: scale(1.1);
+      background: #8b0000;
+      transform: scale(1.05);
+    }
+
+    footer {
+      margin-top: 60px;
+      font-size: 14px;
+      color: #aaa;
     }
   </style>
 </head>
 <body>
-  <div id="contenido">
-    <h1>YELA TEC</h1>
-    <div id="botones-usuario">
-      <button id="btn-docente">Docente</button>
-      <button id="btn-estudiante">Estudiante</button>
-    </div>
+
+  <div class="logo">YELA TEC</div>
+  <div class="subtitulo">Educación Offline con Tecnología Ética y Guías Virtuales</div>
+
+  <div id="botones-usuario">
+    <button id="btn-docente">Docente</button>
+    <button id="btn-estudiante">Estudiante</button>
   </div>
 
-  <!-- Librería Three.js -->
-  <script src="https://cdn.jsdelivr.net/npm/three@0.150.1/build/three.min.js"></script>
+  <footer>
+    YELA TEC WEB © 2025 – Todos los derechos reservados
+  </footer>
 
-  <!-- Fondo animado con Three.js -->
   <script>
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
-    const renderer = new THREE.WebGLRenderer({ alpha: true });
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    document.body.appendChild(renderer.domElement);
+    document.getElementById('btn-docente').addEventListener('click', function () {
+      alert('Acceso para docentes en construcción');
+    });
 
-    const geometry = new THREE.TorusKnotGeometry(10, 3, 100, 16);
-    const material = new THREE.MeshStandardMaterial({ color: 0xffd700, metalness: 0.8, roughness: 0.2 });
-    const torusKnot = new THREE.Mesh(geometry, material);
-    scene.add(torusKnot);
-
-    const light = new THREE.PointLight(0xffffff, 1, 100);
-    light.position.set(20, 20, 20);
-    scene.add(light);
-
-    camera.position.z = 40;
-
-    function animate() {
-      requestAnimationFrame(animate);
-      torusKnot.rotation.x += 0.01;
-      torusKnot.rotation.y += 0.01;
-      renderer.render(scene, camera);
-    }
-    animate();
-
-    window.addEventListener('resize', () => {
-      camera.aspect = window.innerWidth / window.innerHeight;
-      camera.updateProjectionMatrix();
-      renderer.setSize(window.innerWidth, window.innerHeight);
+    document.getElementById('btn-estudiante').addEventListener('click', function () {
+      alert('Bienvenido estudiante. Esta función estará disponible pronto.');
     });
   </script>
 </body>
