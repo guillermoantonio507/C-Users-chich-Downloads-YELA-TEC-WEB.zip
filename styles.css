@@ -1,132 +1,106 @@
 
-/* General */
+/* Fondo animado tecnológico */
 body {
   margin: 0;
   padding: 0;
-  background: linear-gradient(135deg, #0a0f1c, #1a1f2e);
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  color: white;
-  overflow-x: hidden;
-}
-
-/* Intro animada */
-.intro {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  animation: fadeIn 2s ease-in-out;
-  background: linear-gradient(135deg, #000000, #1a1a1a);
-}
-
-.logo {
-  font-size: 4rem;
-  font-weight: bold;
-  color: rgba(255, 255, 255, 0.9);
-  text-shadow: 0 0 10px rgba(255, 255, 0, 0.8), 0 0 20px rgba(255, 255, 255, 0.6);
-  letter-spacing: 5px;
-  animation: slideIn 1.5s ease-in-out;
-}
-
-/* Menú principal */
-.menu {
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, #1e1e2f, #2a2a40);
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 2rem;
-  gap: 1rem;
-  animation: fadeIn 2.5s ease-in;
+  justify-content: center;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Animación intro del logo */
+.intro {
+  animation: fadeIn 2s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.8); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* Logo 3D translúcido */
+.logo {
+  font-size: 4rem;
+  font-weight: bold;
+  color: #fff;
+  text-shadow: 
+    1px 1px 2px #ffec6e, 
+    2px 2px 4px rgba(255, 255, 0, 0.5), 
+    0 0 10px rgba(255, 255, 0, 0.3);
+  background: linear-gradient(to right, #ffe600, #ffffff20);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Estilo del menú principal */
+.menu {
+  margin-top: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
 }
 
 .menu button {
-  padding: 1rem 2rem;
+  padding: 15px 30px;
   font-size: 1.2rem;
-  border: none;
-  border-radius: 12px;
-  background: linear-gradient(145deg, #1e90ff, #00bcd4);
-  color: white;
-  box-shadow: 0 6px 15px rgba(0, 188, 212, 0.4);
+  background: linear-gradient(145deg, #ffffff15, #ffffff05);
+  border: 2px solid #ffec6e;
+  color: #ffec6e;
+  border-radius: 15px;
   cursor: pointer;
   transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(255, 255, 0, 0.3);
 }
 
 .menu button:hover {
-  background: linear-gradient(145deg, #00bcd4, #1e90ff);
+  background: #ffec6e;
+  color: #1e1e2f;
   transform: scale(1.05);
-  box-shadow: 0 8px 20px rgba(0, 255, 255, 0.4);
 }
 
-/* Área de login */
+/* Área de login oculta */
 #login {
+  margin-top: 25px;
   text-align: center;
-  padding: 2rem;
-  animation: fadeInUp 1s ease-in-out;
+  animation: aparecer 1s ease-in-out;
+}
+
+@keyframes aparecer {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 #login h2 {
-  font-size: 2rem;
-  margin-bottom: 1rem;
-  color: #00ffff;
+  color: #ffec6e;
+  font-size: 1.5rem;
 }
 
-#clave {
-  padding: 0.7rem;
-  font-size: 1.1rem;
-  border-radius: 8px;
-  border: 1px solid #00ffff;
-  margin-bottom: 1rem;
-  background-color: #111;
-  color: white;
+#login input {
+  padding: 10px;
+  margin-top: 10px;
+  font-size: 1rem;
+  border-radius: 10px;
+  border: none;
   outline: none;
+  width: 200px;
 }
 
 #login button {
-  padding: 0.7rem 1.5rem;
-  font-size: 1rem;
-  border-radius: 10px;
-  background-color: #00bcd4;
-  color: white;
+  margin-top: 10px;
+  padding: 10px 20px;
+  background: #ffec6e;
+  color: #1e1e2f;
   border: none;
+  border-radius: 10px;
+  font-weight: bold;
   cursor: pointer;
-  box-shadow: 0 5px 10px rgba(0, 255, 255, 0.3);
-  transition: 0.3s ease;
+  transition: 0.3s;
 }
 
-#login button:hover {
-  background-color: #1e90ff;
-  box-shadow: 0 5px 15px rgba(0, 255, 255, 0.6);
-}
-
-/* Animaciones */
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to   { opacity: 1; }
-}
-
-@keyframes slideIn {
-  0% { transform: translateY(-100px); opacity: 0; }
-  100% { transform: translateY(0); opacity: 1; }
-}
-
-@keyframes fadeInUp {
-  from {
-    transform: translateY(20px);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-/* Responsive */
-@media (max-width: 600px) {
-  .logo {
-    font-size: 2.5rem;
-  }
-
-  .menu button {
-    width: 80%;
-    font-size: 1rem;
-  }
-}
+#login button:hov
