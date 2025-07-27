@@ -2,32 +2,30 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>YELA TEC</title>
-  <link rel="stylesheet" href="styles.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>YELA TEC - Bilingüe</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="contenedor">
-    <h1 id="titulo">👩‍🏫 YELA TEC</h1>
-    <p id="subtitulo">Selecciona tu rol y tu idioma</p>
+  <div class="container">
+    <h1 id="titulo">Bienvenidos a YELA TEC</h1>
 
-    <div class="idioma-toggle">
-      <button onclick="cambiarIdioma('es')">🌎 Español</button>
-      <button onclick="cambiarIdioma('en')">🇺🇸 English</button>
+    <div class="language-switch">
+      <label for="idioma">🌐 Idioma / Language:</label>
+      <select id="idioma" onchange="cambiarIdioma()">
+        <option value="es">Español</option>
+        <option value="en">English</option>
+      </select>
+      <button onclick="reconocerIdioma()">🎤 Cambiar por voz</button>
     </div>
 
-    <div class="botones">
-      <button onclick="hablar('docente')" id="btnDocente">👩‍🏫 Docente</button>
-      <button onclick="hablar('estudiante')" id="btnEstudiante">👶 Estudiante</button>
+    <div class="menu">
+      <button onclick="seleccionar('docente')" id="docenteBtn">👩‍🏫 Docente</button>
+      <button onclick="seleccionar('estudiante')" id="estudianteBtn">🧒 Estudiante</button>
     </div>
 
-    <div class="voz-toggle">
-      <button onclick="reconocerVoz()">🎤 Usar voz</button>
-      <input type="text" id="entradaTexto" placeholder="Escribe tu opción..." onkeyup="detectarTexto(this.value)" />
-    </div>
-
-    <p id="mensajeFinal" class="mensaje"></p>
+    <p id="bienvenida">Abajo en el menú elige tu rol</p>
   </div>
 
   <script src="script.js"></script>
