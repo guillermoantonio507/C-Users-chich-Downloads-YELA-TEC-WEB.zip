@@ -9,22 +9,32 @@
 </head>
 <body>
   <header>
-    <div class="logo-container">
-      <h1 class="logo-yela">YELA TEC</h1>
-    </div>
+    <h1 class="logo-3d">YELA TEC</h1>
   </header>
 
   <nav class="menu">
-    <button class="menu-btn docente" onclick="mostrarLogin('docente')">👨‍🏫 Docente</button>
-    <button class="menu-btn estudiante" onclick="mostrarLogin('estudiante')">🧑‍🎓 Estudiante</button>
-    <button class="menu-btn idioma" onclick="cambiarIdioma()">🌐 Cambiar idioma</button>
-    <button class="menu-btn mic" id="mic-btn" onclick="activarMicrofono()" aria-label="Activar micrófono">🎤 Micrófono</button>
+    <button onclick="mostrarLogin()">👨‍🏫 Docente</button>
+    <button onclick="alert('Modo estudiante en desarrollo')">🧒 Estudiante</button>
+    <button onclick="activarMicrofono()">🎤 Micrófono</button>
+    <button onclick="mostrarEntradaTexto()">⌨️ Texto</button>
   </nav>
 
   <section id="login" style="display:none;">
-    <h2 id="bienvenida"></h2>
+    <h2>🔐 Acceso Docente</h2>
     <input type="password" id="clave" placeholder="Clave secreta" />
     <button onclick="verificarClave()">Entrar</button>
+  </section>
+
+  <section id="entradaTexto" style="display:none;">
+    <h2>✍️ Entrada de texto</h2>
+    <textarea id="textoEntrada" rows="4" cols="50" placeholder="Escribe aquí..."></textarea>
+    <button onclick="procesarTexto()">Enviar</button>
+  </section>
+
+  <section id="panelDocente" style="display:none;">
+    <h2>🎓 Panel Docente</h2>
+    <p>Bienvenido al panel exclusivo para docentes.</p>
+    <p id="resultadoVoz">🎧 Esperando entrada de voz...</p>
   </section>
 
   <script src="script.js"></script>
