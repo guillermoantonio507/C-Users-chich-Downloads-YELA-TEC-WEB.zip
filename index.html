@@ -2,40 +2,30 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>YELA TEC</title>
-  <link rel="stylesheet" href="styles.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>YELA TEC WEB 2025</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <header>
-    <h1 class="logo-3d">YELA TEC</h1>
-  </header>
+  <div class="contenedor">
+    <h1 class="titulo">YELA TEC</h1>
+    <p class="subtitulo">Bienvenidos a YELA TEC</p>
 
-  <nav class="menu">
-    <button onclick="mostrarLogin()">👨‍🏫 Docente</button>
-    <button onclick="alert('Modo estudiante en desarrollo')">🧒 Estudiante</button>
-    <button onclick="activarMicrofono()">🎤 Micrófono</button>
-    <button onclick="mostrarEntradaTexto()">⌨️ Texto</button>
-  </nav>
+    <div class="menu">
+      <button onclick="mostrarLogin()" class="boton docente">👩‍🏫 Docente</button>
+      <button onclick="mostrarBienvenidaEstudiante()" class="boton estudiante">🧑‍🎓 Estudiante</button>
+    </div>
 
-  <section id="login" style="display:none;">
-    <h2>🔐 Acceso Docente</h2>
-    <input type="password" id="clave" placeholder="Clave secreta" />
-    <button onclick="verificarClave()">Entrar</button>
-  </section>
+    <div id="login" class="login" style="display: none;">
+      <input type="password" id="clave" placeholder="Ingresa clave docente">
+      <button onclick="verificarClave()">Entrar</button>
+    </div>
 
-  <section id="entradaTexto" style="display:none;">
-    <h2>✍️ Entrada de texto</h2>
-    <textarea id="textoEntrada" rows="4" cols="50" placeholder="Escribe aquí..."></textarea>
-    <button onclick="procesarTexto()">Enviar</button>
-  </section>
-
-  <section id="panelDocente" style="display:none;">
-    <h2>🎓 Panel Docente</h2>
-    <p>Bienvenido al panel exclusivo para docentes.</p>
-    <p id="resultadoVoz">🎧 Esperando entrada de voz...</p>
-  </section>
+    <div id="bienvenida" class="bienvenida" style="display: none;">
+      <p>¡Hola estudiante! Gracias por usar YELA TEC.</p>
+    </div>
+  </div>
 
   <script src="script.js"></script>
 </body>
