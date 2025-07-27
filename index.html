@@ -1,60 +1,177 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>YELA TEC - Versión Web</title>
-  <link rel="stylesheet" href="styles.css" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>YELA TEC - Portada</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Orbitron&display=swap');
+
+  body {
+    margin: 0; padding: 0;
+    background: linear-gradient(135deg, #1e1e2f, #3b0a0a);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    text-align: center;
+  }
+
+  /* Estilo para YELA TEC con efecto chip rojo rubí y borde dorado */
+  .logo {
+    font-family: 'Orbitron', monospace;
+    font-size: 5rem;
+    color: rgba(199, 11, 11, 0.8); /* rojo rubí translúcido */
+    position: relative;
+    letter-spacing: 0.3em;
+    margin-bottom: 0.2em;
+    user-select: none;
+    -webkit-text-stroke: 1px gold;
+    text-shadow:
+      0 0 5px gold,
+      0 0 10px gold,
+      0 0 20px gold,
+      0 0 30px #b22222,
+      0 0 40px #b22222,
+      0 0 50px #b22222,
+      0 0 60px #b22222;
+  }
+
+  /* Panel de entrada */
+  .input-panel {
+    margin: 20px 0;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+  }
+
+  input[type="text"] {
+    padding: 12px 18px;
+    border-radius: 30px;
+    border: 2px solid gold;
+    width: 250px;
+    font-size: 1.1rem;
+    outline: none;
+    font-weight: 600;
+    color: #b22222;
+    background: rgba(255,255,255,0.9);
+    transition: border-color 0.3s ease;
+  }
+
+  input[type="text"]:focus {
+    border-color: #f39c12;
+  }
+
+  button.mic-button {
+    background: gold;
+    border: none;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    cursor: pointer;
+    box-shadow:
+      0 0 5px gold,
+      0 0 10px gold;
+    transition: background 0.3s ease;
+  }
+  button.mic-button:hover {
+    background: #f39c12;
+  }
+
+  button.mic-button:active {
+    background: #c67c00;
+  }
+
+  button.mic-button svg {
+    fill: #b22222;
+    width: 24px;
+    height: 24px;
+  }
+
+  /* Botones Docente y Estudiante */
+  .btn-group {
+    margin-top: 30px;
+    display: flex;
+    gap: 20px;
+  }
+
+  button.action-btn {
+    background: rgba(199, 11, 11, 0.8);
+    color: gold;
+    border: 2px solid gold;
+    padding: 14px 36px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    border-radius: 40px;
+    cursor: pointer;
+    box-shadow:
+      0 0 10px gold;
+    transition: background 0.4s ease;
+    user-select: none;
+  }
+  button.action-btn:hover {
+    background: gold;
+    color: #b22222;
+  }
+
+  button.action-btn:active {
+    background: #c67c00;
+  }
+
+  /* Responsivo */
+  @media(max-width: 480px) {
+    .logo {
+      font-size: 3rem;
+      letter-spacing: 0.15em;
+    }
+    input[type="text"] {
+      width: 150px;
+      font-size: 1rem;
+    }
+    .btn-group {
+      flex-direction: column;
+      gap: 12px;
+    }
+  }
+</style>
 </head>
 <body>
-  <header>
-    <h1>📘 YELA TEC</h1>
-    <p>Educación ecológica con guías interactivos</p>
-  </header>
 
-  <main>
-    <section id="bienvenida">
-      <p>Bienvenido a YELA TEC. Elige tu rol para continuar:</p>
-      <button onclick="mostrarLogin()">?? Docente</button>
-      <button onclick="accesoEstudiante()">?? Estudiante</button>
-    </section>
+  <h1 class="logo">YELA TEC</h1>
 
-    <section id="login" style="display: none;">
-      <h3>?? Ingreso seguro</h3>
-      <input type="password" id="clave" placeholder="Ingresa la clave" />
-      <button onclick="verificarClave()">Ingresar</button>
-      <p id="mensajeClave"></p>
-    </section>
+  <div class="input-panel" role="search" aria-label="Entrada de texto y micrófono">
+    <input type="text" id="textInput" placeholder="Escribe aquí..." aria-label="Campo de texto" />
+    <button class="mic-button" id="micBtn" aria-label="Activar micrófono">
+      <svg viewBox="0 0 24 24" >
+        <path d="M12 14a3 3 0 0 0 3-3V6a3 3 0 0 0-6 0v5a3 3 0 0 0 3 3zm5-3a5 5 0 0 1-10 0H5a7 7 0 0 0 14 0h-2zm-5 9a7 7 0 0 0 7-7h-2a5 5 0 0 1-10 0H5a7 7 0 0 0 7 7z"/>
+      </svg>
+    </button>
+  </div>
 
-    <section id="menuDocente" style="display: none;">
-      <h2> Menú<p>👩‍🏫 Docente: Iniciar sesión</p>
- 
-     <button onclick="mostrarPanel()">?? Ver seguimiento</button>
-      <button onclick="mostrarConfig()">?? Configuración</button>
-      <button onclick="cerrarSesion()">?? Cerrar sesión</button>
-    </section>
+  <div class="btn-group">
+    <button class="action-btn" id="docenteBtn">Acceso Docente</button>
+    <button class="action-btn" id="estudianteBtn">Acceso Estudiante</button>
+  </div>
 
-    <section id="configClave" style="display: none;">
-      <h3>Cambiar clave de acceso</h3>
-      <input type="password" id="nuevaClave" placeholder="Nueva clave" />
-      <button onclick="confirmarCambioClave()">Confirmar cambio</button>
-      <p id="msgCambio"></p>
-    </section>
+<script>
+  // Aquí puedes agregar el código para micrófono, eventos de botones, etc.
 
-    <section id="panel" style="display: none;">
-      <h3>Seguimiento de actividades</h3>
-      <ul>
-        <li>🕊️ Aves vistas: 4</li>
-        <li>⏱️ Tiempo de sesión: 12 minutos</li>
-        <li> 🖱️ Interacciones: 10</li>
-      </ul>
-    </section>
-  </main>
+  document.getElementById('micBtn').addEventListener('click', () => {
+    alert('Función de micrófono activada (a implementar)');
+  });
 
-  <footer>
-    <p>&copy; 2025 YELA TEC. Cuidando la fauna con tecnología.</p>
-  </footer>
+  document.getElementById('docenteBtn').addEventListener('click', () => {
+    alert('Acceso Docente (a implementar)');
+  });
 
-  <script src="script.js"></script>
+  document.getElementById('estudianteBtn').addEventListener('click', () => {
+    alert('Acceso Estudiante (a implementar)');
+  });
+</script>
+
 </body>
 </html>
