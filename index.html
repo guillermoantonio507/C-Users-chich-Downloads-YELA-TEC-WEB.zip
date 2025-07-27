@@ -2,39 +2,32 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>YELA TEC 2025</title>
-  <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>YELA TEC</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <div id="bienvenida">
-    <h1 id="titulo">Bienvenidos a YELA TEC</h1>
-    <p id="subtitulo">Abajo en el menú elige tu rol</p>
+  <div class="contenedor">
+    <h1 id="titulo">👩‍🏫 YELA TEC</h1>
+    <p id="subtitulo">Selecciona tu rol y tu idioma</p>
 
-    <div class="menu">
-      <button onclick="mostrarLogin('docente')">🎓 Docente</button>
-      <button onclick="mostrarLogin('estudiante')">🧒 Estudiante</button>
+    <div class="idioma-toggle">
+      <button onclick="cambiarIdioma('es')">🌎 Español</button>
+      <button onclick="cambiarIdioma('en')">🇺🇸 English</button>
     </div>
 
-    <div id="selector-idioma">
-      <label for="idioma">🌐 Language:</label>
-      <select id="idioma" onchange="cambiarIdioma()">
-        <option value="es">Español</option>
-        <option value="en">English</option>
-      </select>
+    <div class="botones">
+      <button onclick="hablar('docente')" id="btnDocente">👩‍🏫 Docente</button>
+      <button onclick="hablar('estudiante')" id="btnEstudiante">👶 Estudiante</button>
     </div>
 
-    <div id="voz-control">
-      <button onclick="reconocerVoz()">🎙️ Activar micrófono</button>
+    <div class="voz-toggle">
+      <button onclick="reconocerVoz()">🎤 Usar voz</button>
+      <input type="text" id="entradaTexto" placeholder="Escribe tu opción..." onkeyup="detectarTexto(this.value)" />
     </div>
-  </div>
 
-  <div id="login" style="display:none;">
-    <input type="password" id="clave" placeholder="Introduce la clave">
-    <button onclick="verificarClave()">Entrar</button>
-    <p id="errorClave" style="color:red;"></p>
+    <p id="mensajeFinal" class="mensaje"></p>
   </div>
 
   <script src="script.js"></script>
