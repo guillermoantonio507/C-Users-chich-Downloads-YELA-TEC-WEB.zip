@@ -1,34 +1,20 @@
 
-const claveDocente = "docente.YELA.TEC.2025";
+// script.js
 
-document.getElementById("btn-docente").addEventListener("click", () => {
-  let claveIngresada = prompt("Ingrese clave para acceso docente:");
-  if (claveIngresada === claveDocente) {
-    mostrarMenuDocente();
-  } else {
-    alert("Clave incorrecta. Acceso denegado.");
-  }
+// Menú Docente y Estudiante toggles
+const btnDocente = document.getElementById('btn-docente');
+const btnEstudiante = document.getElementById('btn-estudiante');
+const menuDocente = document.getElementById('menu-docente');
+const menuEstudiante = document.getElementById('menu-estudiante');
+
+btnDocente.addEventListener('click', () => {
+  const expanded = btnDocente.getAttribute('aria-expanded') === 'true';
+  btnDocente.setAttribute('aria-expanded', String(!expanded));
+  menuDocente.classList.toggle('active');
+  // Cierra menú estudiante
+  menuEstudiante.classList.remove('active');
+  btnEstudiante.setAttribute('aria-expanded', 'false');
 });
 
-document.getElementById("btn-estudiante").addEventListener("click", () => {
-  alert("Bienvenido estudiante. Próximamente tendrás acceso a guías interactivas.");
-});
-
-function mostrarMenuDocente() {
-  document.body.innerHTML = `
-    <h1>Menú Docente - YELA TEC</h1>
-    <button onclick="cerrarSesion()">Cerrar sesión</button>
-    <div>
-      <h3>Opciones disponibles:</h3>
-      <ul>
-        <li>Ver progreso de estudiantes</li>
-        <li>Configurar guías de aves</li>
-        <li>Agregar material educativo</li>
-      </ul>
-    </div>
-  `;
-}
-
-function cerrarSesion() {
-  location.reload();
-}
+btnEstudiante.addEventListener('click', () => {
+  const expanded = btnEstudiante.getAttribute('aria
