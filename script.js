@@ -1,24 +1,57 @@
 
+let idioma = "es";
 let claveDocente = "docente.YELA.TEC.2025";
-let idiomaActual = "es"; // "es" para español, "en" para inglés
 
-function mostrarLogin(tipo) {
-  document.getElementById("login").style.display = "block";
-  const mensajes = {
-    es: { docente: "Bienvenido Docente", estudiante: "Bienvenido Estudiante" },
-    en: { docente: "Welcome Teacher", estudiante: "Welcome Student" }
+function mostrarLogin(rol) {
+  const bienvenida = {
+    es: rol === 'docente' ? 'Bienvenido docente' : 'Bienvenido estudiante',
+    en: rol === 'docente' ? 'Welcome teacher' : 'Welcome student'
   };
-  document.getElementById("bienvenida").innerText = mensajes[idiomaActual][tipo];
+  document.getElementById("bienvenida").innerText = bienvenida[idioma];
+  document.getElementById("login").style.display = "block";
 }
 
 function verificarClave() {
-  let claveIngresada = document.getElementById("clave").value;
-  if (claveIngresada === claveDocente) {
-    alert(idiomaActual === "es" ? "Acceso concedido" : "Access granted");
+  const clave = document.getElementById("clave").value;
+  if (clave === claveDocente) {
+    alert(idioma === "es" ? "Acceso docente correcto" : "Teacher access granted");
   } else {
-    alert(idiomaActual === "es" ? "Clave incorrecta" : "Wrong password");
+    alert(idioma === "es" ? "Clave incorrecta" : "Incorrect password");
   }
 }
 
 function cambiarIdioma() {
-  idioma
+  idioma = idioma === "es" ? "en" : "es";
+  document.querySelectorAll("[data-es]").forEach(el => {
+    el.textContent = el.getAttribute(`data-${idioma}`);
+  });
+}
+
+function activarMicrofono() {
+  if (!('webkitSpeechRecognition' in window)) {
+    alert("Reconocimiento de voz no soportado.");
+    return;
+  }
+
+  const recognition = new webkitSpeechRecognition();
+  recognition.lang = idioma === "es" ? "es-ES" : "en-US";
+  recognition.continuous = false;
+  recognition.interimResults = false;
+
+  recognition.onresult = function (event) {
+    const resultado = event.results[0][0].transcript.toLowerCase();
+    if (resultado.includes("docente") || resultado.includes("teacher")) {
+      mostrarLogin("docente");
+    } else if (resultado.includes("estudiante") || resultado.includes("student")) {
+      mostrarLogin("estudiante");
+    } else {
+      alert(`Escuché: "${resultado}"`);
+    }
+  };
+
+  recognition.onerror = function (event) {
+    alert("Error de reconocimiento: " + event.error);
+  };
+
+  recognition.start();
+}
