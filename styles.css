@@ -1,82 +1,74 @@
 
 body {
-  background-color: #0e0e0e;
   margin: 0;
-  font-family: 'Segoe UI', sans-serif;
+  padding: 0;
+  background: radial-gradient(ellipse at center, #0f0f0f, #000000);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: white;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  flex-direction: column;
+  overflow: hidden;
 }
 
-.logo-text {
-  font-size: 4em;
-  background: linear-gradient(
-    145deg,
-    rgba(255, 0, 70, 0.7),
-    rgba(255, 100, 150, 0.5)
-  );
-  -webkit-background-clip: text;
-  color: transparent;
-  border: 2px solid gold;
-  border-radius: 20px;
-  padding: 20px;
-  box-shadow: 
-    0 0 20px rgba(255, 0, 70, 0.7),
-    0 0 40px rgba(255, 215, 0, 0.5),
-    inset 0 0 10px rgba(255, 0, 70, 0.6);
-  text-shadow:
-    0 0 5px #ff0046,
-    0 0 10px gold,
-    0 0 15px #ff0046;
-  backdrop-filter: blur(8px);
+.contenedor-principal {
   text-align: center;
 }
 
-.menu {
-  margin-top: 40px;
-  display: flex;
-  gap: 15px;
-  flex-wrap: wrap;
-  justify-content: center;
+.titulo-yela {
+  font-size: 4rem;
+  font-weight: bold;
+  background: linear-gradient(
+    to right,
+    rgba(255, 0, 0, 0.8),
+    rgba(255, 50, 50, 0.7),
+    rgba(255, 0, 0, 0.9)
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  text-shadow:
+    0 0 10px rgba(255, 0, 0, 0.7),
+    0 0 20px rgba(255, 215, 0, 0.8),
+    2px 2px 5px rgba(0, 0, 0, 0.6);
+  border: 3px solid transparent;
+  border-image: linear-gradient(to right, gold, crimson) 1;
+  padding: 20px;
+  filter: drop-shadow(0 0 10px #ff0000);
+  position: relative;
 }
 
-.menu button {
-  padding: 12px 20px;
-  font-size: 1.1em;
-  border-radius: 12px;
-  border: 1px solid #ff0046;
-  background: rgba(255, 255, 255, 0.05);
-  color: #fff;
-  box-shadow: 0 0 10px #ff0046;
-  backdrop-filter: blur(4px);
+.titulo-yela::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 90%;
+  height: 80%;
+  transform: translate(-50%, -50%);
+  background-image: url('https://www.transparenttextures.com/patterns/circuits.png');
+  background-size: cover;
+  opacity: 0.2;
+  z-index: -1;
+}
+
+.menu-opciones button,
+.idiomas button {
+  margin: 10px;
+  padding: 12px 24px;
+  font-size: 1rem;
+  background: #222;
+  color: white;
+  border: 1px solid #555;
+  border-radius: 10px;
   cursor: pointer;
   transition: all 0.3s ease;
 }
 
-.menu button:hover {
-  background: rgba(255, 255, 255, 0.1);
-  transform: scale(1.05);
-  box-shadow: 0 0 15px gold;
-}
-
-.language-toggle {
-  margin-top: 20px;
-}
-
-.language-toggle button {
-  background: transparent;
-  color: gold;
-  border: 1px solid gold;
-  padding: 8px 16px;
-  margin: 0 5px;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.language-toggle button:hover {
-  background: gold;
-  color: #000;
+.menu-opciones button:hover,
+.idiomas button:hover {
+  background: crimson;
+  color: white;
+  box-shadow: 0 0 10px crimson;
 }
