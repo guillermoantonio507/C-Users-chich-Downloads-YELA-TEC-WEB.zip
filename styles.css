@@ -1,74 +1,66 @@
 
 body {
   margin: 0;
-  padding: 0;
-  background: radial-gradient(ellipse at center, #0f0f0f, #000000);
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  color: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #000;
+  color: #fff;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
 }
 
-.contenedor-principal {
-  text-align: center;
-}
-
-.titulo-yela {
-  font-size: 4rem;
+.logo {
+  font-size: 5rem;
   font-weight: bold;
-  background: linear-gradient(
-    to right,
-    rgba(255, 0, 0, 0.8),
-    rgba(255, 50, 50, 0.7),
-    rgba(255, 0, 0, 0.9)
-  );
-  background-clip: text;
-  -webkit-background-clip: text;
-  color: transparent;
+  color: rgba(255, 0, 64, 0.6);
   text-shadow:
-    0 0 10px rgba(255, 0, 0, 0.7),
-    0 0 20px rgba(255, 215, 0, 0.8),
-    2px 2px 5px rgba(0, 0, 0, 0.6);
-  border: 3px solid transparent;
-  border-image: linear-gradient(to right, gold, crimson) 1;
-  padding: 20px;
-  filter: drop-shadow(0 0 10px #ff0000);
-  position: relative;
+    0 0 5px rgba(255, 0, 64, 0.8),
+    0 0 10px rgba(255, 0, 64, 0.8),
+    0 0 20px gold,
+    0 0 40px #ff0040;
+  border: 2px solid gold;
+  padding: 10px 20px;
+  border-radius: 15px;
+  background: linear-gradient(145deg, rgba(255, 0, 64, 0.2), transparent);
+  backdrop-filter: blur(10px);
+  animation: logoIntro 2s ease-out forwards;
 }
 
-.titulo-yela::after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 90%;
-  height: 80%;
-  transform: translate(-50%, -50%);
-  background-image: url('https://www.transparenttextures.com/patterns/circuits.png');
-  background-size: cover;
-  opacity: 0.2;
-  z-index: -1;
+@keyframes logoIntro {
+  0% { transform: scale(0) rotate(-360deg); opacity: 0; }
+  100% { transform: scale(1) rotate(0); opacity: 1; }
 }
 
-.menu-opciones button,
-.idiomas button {
-  margin: 10px;
+.menu-container {
+  margin-top: 50px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+}
+
+.menu-btn {
+  background: rgba(0, 0, 0, 0.6);
+  border: 2px solid #ff0040;
+  color: #fff;
   padding: 12px 24px;
-  font-size: 1rem;
-  background: #222;
-  color: white;
-  border: 1px solid #555;
-  border-radius: 10px;
+  border-radius: 12px;
+  font-size: 1.2rem;
   cursor: pointer;
   transition: all 0.3s ease;
 }
 
-.menu-opciones button:hover,
-.idiomas button:hover {
-  background: crimson;
-  color: white;
-  box-shadow: 0 0 10px crimson;
+.menu-btn:hover {
+  background: #ff0040;
+  color: #000;
+}
+
+select {
+  margin-top: 20px;
+  padding: 10px;
+  font-size: 1rem;
+  border-radius: 8px;
 }
