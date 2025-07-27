@@ -4,80 +4,69 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>YELA TEC WEB</title>
+  <title>YELA TEC Web 2025</title>
   <style>
     body {
       margin: 0;
-      padding: 0;
       font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(to bottom right, #000000, #1a1a1a);
-      color: gold;
+      background: linear-gradient(145deg, #0d0d0d, #1a1a1a);
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+    }
+
+    h1 {
+      font-size: 3em;
+      color: rgba(255, 0, 0, 0.7);
+      text-shadow: 0 0 10px #ff0000, 0 0 20px #b22222, 0 0 30px #b22222;
+      margin-bottom: 20px;
+    }
+
+    #botones-usuario {
       text-align: center;
-    }
-
-    .logo {
-      font-size: 48px;
-      font-weight: bold;
-      color: rgba(255, 0, 0, 0.8);
-      text-shadow: 0 0 10px gold, 0 0 20px red;
-      margin-top: 60px;
-    }
-
-    .subtitulo {
-      font-size: 20px;
-      margin-bottom: 30px;
-      color: #ffcc00;
-      text-shadow: 0 0 5px #ff9900;
+      margin-top: 20px;
     }
 
     #botones-usuario button {
-      padding: 14px 32px;
-      margin: 15px;
+      padding: 15px 40px;
+      margin: 10px;
       font-size: 20px;
-      border-radius: 10px;
+      border-radius: 12px;
       border: none;
       background: #b22222;
       color: gold;
       font-weight: bold;
       cursor: pointer;
-      box-shadow: 0 0 15px gold;
-      transition: transform 0.2s ease, background 0.3s ease;
+      box-shadow: 0 0 10px gold, 0 0 20px rgba(255, 215, 0, 0.4);
+      transition: transform 0.2s ease, background 0.2s ease;
     }
 
     #botones-usuario button:hover {
-      background: #8b0000;
       transform: scale(1.05);
+      background: #cc0000;
     }
 
     footer {
-      margin-top: 60px;
-      font-size: 14px;
-      color: #aaa;
+      position: absolute;
+      bottom: 10px;
+      font-size: 12px;
+      color: #999;
     }
   </style>
 </head>
 <body>
 
-  <div class="logo">YELA TEC</div>
-  <div class="subtitulo">Educación Offline con Tecnología Ética y Guías Virtuales</div>
-
+  <h1>YELA TEC</h1>
   <div id="botones-usuario">
     <button id="btn-docente">Docente</button>
     <button id="btn-estudiante">Estudiante</button>
   </div>
 
-  <footer>
-    YELA TEC WEB © 2025 – Todos los derechos reservados
-  </footer>
+  <footer>© 2025 YELA TEC. Todos los derechos reservados.</footer>
 
-  <script>
-    document.getElementById('btn-docente').addEventListener('click', function () {
-      alert('Acceso para docentes en construcción');
-    });
-
-    document.getElementById('btn-estudiante').addEventListener('click', function () {
-      alert('Bienvenido estudiante. Esta función estará disponible pronto.');
-    });
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
