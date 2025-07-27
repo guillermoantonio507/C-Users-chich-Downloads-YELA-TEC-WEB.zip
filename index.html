@@ -6,26 +6,34 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>YELA TEC WEB 2025</title>
   <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
-  <div class="contenedor">
-    <h1 class="titulo">YELA TEC</h1>
-    <p class="subtitulo">Bienvenidos a YELA TEC</p>
+  <header>
+    <h1 id="titulo">Bienvenidos a YELA TEC</h1>
+    <div class="language-switch">
+      <button onclick="cambiarIdioma('es')">🌐 Español</button>
+      <button onclick="cambiarIdioma('en')">🇺🇸 English</button>
+      <button onclick="activarMicrofono()">🎤 Voz</button>
+    </div>
+  </header>
 
+  <main>
+    <p id="descripcion">Selecciona tu perfil para comenzar</p>
     <div class="menu">
-      <button onclick="mostrarLogin()" class="boton docente">👩‍🏫 Docente</button>
-      <button onclick="mostrarBienvenidaEstudiante()" class="boton estudiante">🧑‍🎓 Estudiante</button>
+      <button class="boton" onclick="mostrarLogin()">👨‍🏫 Docente</button>
+      <button class="boton" onclick="alert('¡Bienvenido estudiante!')">👧 Estudiante</button>
     </div>
 
-    <div id="login" class="login" style="display: none;">
-      <input type="password" id="clave" placeholder="Ingresa clave docente">
-      <button onclick="verificarClave()">Entrar</button>
+    <div id="login" class="login-box">
+      <input type="password" id="clave" placeholder="Ingrese clave docente">
+      <button class="boton" onclick="verificarClave()">Entrar</button>
     </div>
+  </main>
 
-    <div id="bienvenida" class="bienvenida" style="display: none;">
-      <p>¡Hola estudiante! Gracias por usar YELA TEC.</p>
-    </div>
-  </div>
+  <footer>
+    <p id="footerText">© 2025 YELA TEC. Tecnología educativa para el planeta.</p>
+  </footer>
 
   <script src="script.js"></script>
 </body>
