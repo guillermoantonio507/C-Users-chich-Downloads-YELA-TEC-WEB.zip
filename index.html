@@ -3,170 +3,26 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <title>YELA TEC 3D Cinematic</title>
-  <style>
-    body {
-      margin: 0; 
-      overflow: hidden;
-      background: linear-gradient(135deg, #1e1e2f, #3b0a0a);
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      color: white;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-    }
-    #yela-3d-logo {<div id="botones-usuario" style="text-align: center; margin-top: 20px;">
-  <button id="btn-docente" style="padding: 12px 30px; margin: 10px; font-size: 18px; border-radius: 8px; border: none; background: #b22222; color: gold; font-weight: bold; cursor: pointer; box-shadow: 0 0 10px gold;">
-    Docente
-  </button>
-  <button id="btn-estudiante" style="padding: 12px 30px; margin: 10px; font-size: 18px; border-radius: 8px; border: none; background: #b22222; color: gold; font-weight: bold; cursor: pointer; box-shadow: 0 0 10px gold;">
-    Estudiante
-  </button>
-</div>
-
-      width: 100%;
-      height: 300px;
-      max-width: 900px;
-      margin: 0 auto;
-      background: black; /* Para ver el área mientras pruebas */
-    }
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>YELA TEC WEB</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
 
-  <!-- hi YELA TEC portada -->
-  <div id="yela-3d-logo"></div>
+  <div id="logo" style="text-align: center; margin-top: 20px;">
+    <img src="logo-yela-3d.png" alt="YELA TEC" style="width: 200px;" />
+  </div>
 
-  <!-- Three.js y dependencias -->
-  <script src="https://cdn.jsdelivr.net/npm/three@0.152.2/build/three.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/three@0.152.2/examples/js/loaders/FontLoader.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/three@0.152.2/examples/js/geometries/TextGeometry.js"></script>
+  <div id="botones-usuario" style="text-align: center; margin-top: 30px;">
+    <button id="btn-docente" class="btn-principal">Docente</button>
+    <button id="btn-estudiante" class="btn-principal">Estudiante</button>
+  </div>
 
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const container = document.getElementById('yela-3d-logo');
-      const width = container.clientWidth;
-      const height = container.clientHeight;
+  <div id="login" style="display: none; text-align: center; margin-top: 30px;">
+    <input type="password" id="clave" placeholder="Clave de acceso" style="padding: 10px; font-size: 16px;" />
+    <button onclick="verificarClave()" style="padding: 10px 20px; font-size: 16px; margin-left: 10px;">Entrar</button>
+  </div>
 
-      const scene = new THREE.Scene();
-      const camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 1000);
-      camera.position.z = 30;
-
-      const renderer = new THREE.WebGLRenderer({antialias: true, alpha: true});
-      renderer.setSize(width, height);
-      container.appendChild(renderer.domElement);
-
-      // Luces cálidas doradas
-      const pointLight = new THREE.PointLight(0xffd700, 1.7);
-      pointLight.position.set(25, 25, 25);
-      scene.add(pointLight);
-
-      const ambientLight = new THREE.AmbientLight(0x202020, 0.7);
-      scene.add(ambientLight);
-
-      // Textura chip / diagramas
-      const canvas = document.createElement('canvas');
-      canvas.width = 256; canvas.height = 256;
-      const ctx = canvas.getContext('2d');
-      ctx.fillStyle = 'rgba(0,0,0,0.1)';
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-      ctx.strokeStyle = 'rgba(255,215,0,0.4)';
-      ctx.lineWidth = 1;
-      for(let i=0; i<canvas.width; i+=16){
-        ctx.beginPath();
-        ctx.moveTo(i, 0);
-        ctx.lineTo(i, canvas.height);
-        ctx.stroke();
-        ctx.beginPath();
-        ctx.moveTo(0, i);
-        ctx.lineTo(canvas.width, i);
-        ctx.stroke();
-      }
-      const texture = new THREE.CanvasTexture(canvas);
-      texture.wrapS = THREE.RepeatWrapping;
-      texture.wrapT = THREE.RepeatWrapping;
-      texture.repeat.set(4,4);
-
-      // Carga fuente y crea texto 3D
-      const loader = new THREE.FontLoader();
-      loader.load('https://threejs.org/examples/fonts/helvetiker_regular.typeface.json', (font) => {
-        const textGeo = new THREE.TextGeometry('YELA TEC', {
-          font: font,
-          size: 6,
-          height: 1.5,
-          curveSegments: 12,
-          bevelEnabled: true,
-          bevelThickness: 0.4,
-          bevelSize: 0.3,
-          bevelOffset: 0,
-          bevelSegments: 5
-        });
-        textGeo.center();
-
-        const material = new THREE.MeshStandardMaterial({
-          color: 0xB22222,
-          metalness: 0.9,
-          roughness: 0.25,
-          transparent: true,
-          opacity: 0.85,
-          map: texture,
-          emissive: 0x440000,
-          emissiveIntensity: 0.25,
-        });
-
-        const textMesh = new THREE.Mesh(textGeo, material);
-        scene.add(textMesh);
-
-        // Animación
-        function animate(){
-          requestAnimationFrame(animate);
-          textMesh.rotation.y += 0.004;
-          renderer.render(scene, camera);
-        }
-        animate();
-      });
-
-      // Ajuste en resize del contenedor
-      window.addEventListener('resize', () => {
-        const w = container.clientWidth;
-        const h = container.clientHeight;
-        camera.aspect = w / h;
-        camera.updateProjectionMatrix();
-        renderer.setSize(w, h);
-      });
-    });
-  </script><script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const btnDocente = document.getElementById('btn-docente');
-    const btnEstudiante = document.getElementById('btn-estudiante');
-
-    btnDocente.addEventListener('click', () => {
-      alert('Has seleccionado: Docente');
-      // Aquí luego puedes poner la función para abrir el menú docente
-    });<!-- Menú Docente -->
-<section id="menu-docente" style="display:none; padding: 20px; background: #2c0b0b; color: gold; max-width: 800px; margin: 20px auto; border-radius: 10px;">
-  <h2>Menú Docente</h2>
-  <p>Bienvenido, docente. Aquí puedes gestionar las clases, actividades y seguimiento.</p>
-  <!-- Aquí puedes poner botones o enlaces específicos para docente -->
-  <button id="cerrar-docente" style="margin-top: 15px; padding: 8px 20px; border: none; border-radius: 6px; background: #b22222; color: gold; cursor: pointer;">Cerrar Menú</button>
-</section>
-
-<!-- Menú Estudiante -->
-<section id="menu-estudiante" style="display:none; padding: 20px; background: #2c0b0b; color: gold; max-width: 800px; margin: 20px auto; border-radius: 10px;">
-  <h2>Menú Estudiante</h2>
-  <p>Bienvenido, estudiante. Aquí puedes acceder a fichas, juegos y recursos para aprender sobre las aves.</p>
-  <!-- Aquí puedes poner botones o enlaces específicos para estudiante -->
-  <button id="cerrar-estudiante" style="margin-top: 15px; padding: 8px 20px; border: none; border-radius: 6px; background: #b22222; color: gold; cursor: pointer;">Cerrar Menú</button>
-</section>
-
-
-    btnEstudiante.addEventListener('click', () => {
-      alert('Has seleccionado: Estudiante');
-      // Aquí luego puedes poner la función para abrir el menú estudiante
-    });
-  });
-</script>
-
+  <script src="script.js"></script>
 </body>
 </html>
