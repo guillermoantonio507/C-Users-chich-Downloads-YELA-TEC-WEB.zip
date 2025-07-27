@@ -1,29 +1,25 @@
 
-// Mostrar menú Docente y ocultar Estudiante
 function mostrarLogin() {
   document.getElementById('login').style.display = 'flex';
   document.getElementById('estudiante').style.display = 'none';
 }
 
-// Mostrar menú Estudiante y ocultar Docente
 function modoEstudiante() {
   document.getElementById('estudiante').style.display = 'flex';
   document.getElementById('login').style.display = 'none';
   document.getElementById('mensajeAudio').textContent = '';
 }
 
-// Validar clave docente
 function verificarClave() {
   const clave = document.getElementById('clave').value;
   if (clave === 'docente.YELA.TEC.2025') {
     alert('Acceso concedido. Bienvenido Docente.');
-    // Aquí puedes agregar la funcionalidad para el panel docente
+    // Aquí agrega panel o funcionalidad docente
   } else {
     alert('Clave incorrecta. Intenta de nuevo.');
   }
 }
 
-// Activar reconocimiento de voz
 function activarMicrofono() {
   const mensajeAudio = document.getElementById('mensajeAudio');
 
@@ -48,9 +44,5 @@ function activarMicrofono() {
 
   recognition.onerror = (event) => {
     mensajeAudio.textContent = `❌ Error: ${event.error}`;
-  };
-
-  recognition.onend = () => {
-    // Puedes activar algo aquí si quieres cuando termina la escucha
   };
 }
