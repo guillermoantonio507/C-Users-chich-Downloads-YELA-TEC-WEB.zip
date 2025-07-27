@@ -1,106 +1,121 @@
 
-/* Fondo animado tecnológico */
+/* Fondo animado e intro */
 body {
   margin: 0;
   padding: 0;
   font-family: 'Segoe UI', sans-serif;
-  background: linear-gradient(135deg, #1e1e2f, #2a2a40);
+  background: linear-gradient(135deg, #020024, #090979, #00d4ff);
+  background-size: 400% 400%;
+  animation: fondoAnimado 15s ease infinite;
+  color: white;
+}
+
+@keyframes fondoAnimado {
+  0% {background-position: 0% 50%;}
+  50% {background-position: 100% 50%;}
+  100% {background-position: 0% 50%;}
+}
+
+/* Animación de entrada */
+.intro {
+  text-align: center;
+  padding: 80px 20px 40px;
+  animation: fadeInDown 2s ease-out;
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Título estilo 3D translúcido */
+.logo {
+  font-size: 4rem;
+  font-weight: 800;
+  color: rgba(255, 255, 255, 0.9);
+  text-shadow: 
+    2px 2px 0 #ffcc00,
+    4px 4px 0 rgba(0, 0, 0, 0.4),
+    0 0 15px rgba(255, 255, 0, 0.6);
+  letter-spacing: 4px;
+  text-transform: uppercase;
+}
+
+/* Menú principal */
+.menu {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  height: 100vh;
-  overflow: hidden;
-}
-
-/* Animación intro del logo */
-.intro {
-  animation: fadeIn 2s ease-in-out;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: scale(0.8); }
-  to { opacity: 1; transform: scale(1); }
-}
-
-/* Logo 3D translúcido */
-.logo {
-  font-size: 4rem;
-  font-weight: bold;
-  color: #fff;
-  text-shadow: 
-    1px 1px 2px #ffec6e, 
-    2px 2px 4px rgba(255, 255, 0, 0.5), 
-    0 0 10px rgba(255, 255, 0, 0.3);
-  background: linear-gradient(to right, #ffe600, #ffffff20);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-/* Estilo del menú principal */
-.menu {
-  margin-top: 30px;
-  display: flex;
-  flex-wrap: wrap;
   gap: 15px;
-  justify-content: center;
+  margin-top: 30px;
+  animation: fadeInUp 2s ease;
 }
 
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Botones del menú */
 .menu button {
-  padding: 15px 30px;
+  background: rgba(255, 255, 255, 0.15);
+  border: 2px solid #ffcc00;
+  border-radius: 12px;
+  color: #fff;
   font-size: 1.2rem;
-  background: linear-gradient(145deg, #ffffff15, #ffffff05);
-  border: 2px solid #ffec6e;
-  color: #ffec6e;
-  border-radius: 15px;
+  padding: 12px 28px;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(255, 255, 0, 0.3);
+  backdrop-filter: blur(8px);
 }
 
 .menu button:hover {
-  background: #ffec6e;
-  color: #1e1e2f;
+  background: rgba(255, 255, 255, 0.3);
+  color: #000;
   transform: scale(1.05);
 }
 
-/* Área de login oculta */
+/* Panel de login oculto */
 #login {
-  margin-top: 25px;
   text-align: center;
-  animation: aparecer 1s ease-in-out;
-}
-
-@keyframes aparecer {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-#login h2 {
-  color: #ffec6e;
-  font-size: 1.5rem;
+  margin-top: 40px;
+  animation: fadeIn 2s ease;
 }
 
 #login input {
   padding: 10px;
-  margin-top: 10px;
   font-size: 1rem;
-  border-radius: 10px;
-  border: none;
-  outline: none;
-  width: 200px;
+  border: 2px solid #ffcc00;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  backdrop-filter: blur(5px);
+  margin-bottom: 10px;
 }
 
 #login button {
-  margin-top: 10px;
-  padding: 10px 20px;
-  background: #ffec6e;
-  color: #1e1e2f;
+  background-color: #ffcc00;
   border: none;
-  border-radius: 10px;
+  padding: 10px 20px;
   font-weight: bold;
+  border-radius: 8px;
   cursor: pointer;
-  transition: 0.3s;
+  color: #000;
+  transition: background 0.3s ease;
 }
 
-#login button:hov
+#login button:hover {
+  background-color: #ffe066;
+}
