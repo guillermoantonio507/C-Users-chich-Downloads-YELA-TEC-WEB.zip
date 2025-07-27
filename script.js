@@ -1,63 +1,38 @@
 
 let idioma = "es";
-const claveDocente = "docente.YELA.TEC.2025";
+let claveActual = "docente.YELA.TEC.2025";
 
 function mostrarLogin(rol) {
-  const mensajes = {
-    es: { docente: "Bienvenido docente", estudiante: "Bienvenido estudiante" },
-    en: { docente: "Welcome teacher", estudiante: "Welcome student" }
-  };
-  document.getElementById("bienvenida").textContent = mensajes[idioma][rol];
-  document.getElementById("login").style.display = "flex";
+  document.getElementById("login").style.display = "block";
+  const mensaje = idioma === "es" ? `Bienvenido ${rol}` : `Welcome ${rol}`;
+  document.getElementById("bienvenida").textContent = mensaje;
 }
 
 function verificarClave() {
-  const claveIngresada = document.getElementById("clave").value;
-  if (claveIngresada === claveDocente) {
-    alert(idioma === "es" ? "Acceso docente correcto" : "Teacher access granted");
+  const clave = document.getElementById("clave").value;
+  if (clave === claveActual) {
+    alert(idioma === "es" ? "Acceso concedido" : "Access granted");
   } else {
-    alert(idioma === "es" ? "Clave incorrecta" : "Incorrect password");
+    alert(idioma === "es" ? "Clave incorrecta" : "Wrong key");
   }
 }
 
 function cambiarIdioma() {
   idioma = idioma === "es" ? "en" : "es";
-
-  document.querySelectorAll("[data-es]").forEach(el => {
-    el.textContent = el.getAttribute(`data-${idioma}`);
-  });
+  alert(idioma === "es" ? "Idioma cambiado a Español" : "Language changed to English");
 }
 
 function activarMicrofono() {
-  if (!('webkitSpeechRecognition' in window)) {
-    alert(idioma === "es" ? "Reconocimiento de voz no soportado." : "Voice recognition not supported.");
-    return;
-  }
-
-  const recognition = new webkitSpeechRecognition();
+  const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
   recognition.lang = idioma === "es" ? "es-ES" : "en-US";
-  recognition.continuous = false;
-  recognition.interimResults = false;
 
-  recognition.onstart = () => {
-    alert(idioma === "es" ? "🎤 Escuchando..." : "🎤 Listening...");
+  recognition.onresult = function(event) {
+    const texto = event.results[0][0].transcript.toLowerCase();
+    alert(`🎤 ${idioma === "es" ? "Has dicho" : "You said"}: ${texto}`);
   };
 
-  recognition.onresult = function (event) {
-    const resultado = event.results[0][0].transcript.toLowerCase();
-    if ((idioma === "es" && resultado.includes("docente")) || (idioma === "en" && resultado.includes("teacher"))) {
-      mostrarLogin("docente");
-    } else if ((idioma === "es" && resultado.includes("estudiante")) || (idioma === "en" && resultado.includes("student"))) {
-      mostrarLogin("estudiante");
-    } else if ((idioma === "es" && resultado.includes("idioma")) || (idioma === "en" && resultado.includes("language"))) {
-      cambiarIdioma();
-    } else {
-      alert((idioma === "es" ? "Escuché: " : "I heard: ") + `"${resultado}"`);
-    }
-  };
-
-  recognition.onerror = function (event) {
-    alert((idioma === "es" ? "Error de reconocimiento: " : "Recognition error: ") + event.error);
+  recognition.onerror = function(event) {
+    alert("🎤 Error: " + event.error);
   };
 
   recognition.start();
