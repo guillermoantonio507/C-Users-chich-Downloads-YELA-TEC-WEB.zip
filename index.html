@@ -136,6 +136,22 @@
         renderer.setSize(w, h);
       });
     });
-  </script>
+  </script><script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const btnDocente = document.getElementById('btn-docente');
+    const btnEstudiante = document.getElementById('btn-estudiante');
+
+    btnDocente.addEventListener('click', () => {
+      alert('Has seleccionado: Docente');
+      // Aquí luego puedes poner la función para abrir el menú docente
+    });
+
+    btnEstudiante.addEventListener('click', () => {
+      alert('Has seleccionado: Estudiante');
+      // Aquí luego puedes poner la función para abrir el menú estudiante
+    });
+  });
+</script>
+
 </body>
 </html>
