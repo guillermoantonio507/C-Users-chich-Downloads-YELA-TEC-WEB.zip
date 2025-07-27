@@ -33,11 +33,11 @@ function procesarTexto() {
     return;
   }
   alert("Texto recibido: " + texto);
-  // Aquí puedes integrar llamada a IA o procesamiento adicional
+  // Aquí puedes procesar el texto o enviar a IA
 }
 
-// Reconocimiento de voz
 let reconocimiento;
+
 try {
   const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
   reconocimiento = new SpeechRecognition();
