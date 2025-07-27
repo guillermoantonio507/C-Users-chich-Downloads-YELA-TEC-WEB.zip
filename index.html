@@ -3,37 +3,30 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>YELA TEC WEB 2025</title>
+  <title>YELA TEC WEB</title>
   <link rel="stylesheet" href="styles.css">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
-  <header>
-    <h1 id="titulo">Bienvenidos a YELA TEC</h1>
-    <div class="language-switch">
-      <button onclick="cambiarIdioma('es')">🌐 Español</button>
-      <button onclick="cambiarIdioma('en')">🇺🇸 English</button>
-      <button onclick="activarMicrofono()">🎤 Voz</button>
-    </div>
-  </header>
-
   <main>
-    <p id="descripcion">Selecciona tu perfil para comenzar</p>
-    <div class="menu">
-      <button class="boton" onclick="mostrarLogin()">👨‍🏫 Docente</button>
-      <button class="boton" onclick="alert('¡Bienvenido estudiante!')">👧 Estudiante</button>
-    </div>
+    <h1>YELA TEC WEB</h1>
+    <p id="bienvenida">Bienvenido a YELA TEC</p>
 
-    <div id="login" class="login-box">
-      <input type="password" id="clave" placeholder="Ingrese clave docente">
-      <button class="boton" onclick="verificarClave()">Entrar</button>
-    </div>
+    <section class="selector">
+      <button onclick="seleccionarIdioma('es')">🇵🇦 Español</button>
+      <button onclick="seleccionarIdioma('en')">🇺🇸 English</button>
+    </section>
+
+    <section id="menu">
+      <button id="botonDocente">👨‍🏫 Docente</button>
+      <button id="botonEstudiante">👧 Estudiante</button>
+    </section>
+
+    <section>
+      <button onclick="activarMicrofono()">🎤 Cambiar idioma por voz</button>
+    </section>
   </main>
-
-  <footer>
-    <p id="footerText">© 2025 YELA TEC. Tecnología educativa para el planeta.</p>
-  </footer>
 
   <script src="script.js"></script>
 </body>
