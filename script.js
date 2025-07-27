@@ -1,5 +1,5 @@
 
-const claveCorrecta = "docente.YELA.TEC.2025";
+onst claveCorrecta = "docente.YELA.TEC.2025";
 
 function mostrarLogin() {
   document.getElementById("login").style.display = "block";
@@ -11,11 +11,11 @@ function mostrarLogin() {
 function verificarClave() {
   const claveIngresada = document.getElementById("clave").value.trim();
   if (claveIngresada === claveCorrecta) {
-    alert("✅ Acceso autorizado. Bienvenido Docente.");
+    alert("Acceso autorizado. Bienvenido Docente.");
     document.getElementById("login").style.display = "none";
     document.getElementById("panelDocente").style.display = "block";
   } else {
-    alert("❌ Clave incorrecta. Intente de nuevo.");
+    alert("Clave incorrecta. Intente de nuevo.");
   }
 }
 
@@ -33,7 +33,7 @@ function procesarTexto() {
     return;
   }
   alert("Texto recibido: " + texto);
-  // Aquí puedes procesar el texto o enviar a IA
+  // Aqui puedes procesar el texto o enviar a IA
 }
 
 let reconocimiento;
@@ -46,21 +46,21 @@ try {
 
   reconocimiento.onresult = function(event) {
     const resultado = event.results[0][0].transcript;
-    document.getElementById("resultadoVoz").textContent = "🎤 Tú dijiste: " + resultado;
+    document.getElementById("resultadoVoz").textContent = "Tu dijiste: " + resultado;
   };
 
   reconocimiento.onerror = function(event) {
-    console.error("⚠️ Error en el reconocimiento de voz:", event.error);
-    document.getElementById("resultadoVoz").textContent = "❌ Error al escuchar. Intenta de nuevo.";
+    console.error("Error en el reconocimiento de voz:", event.error);
+    document.getElementById("resultadoVoz").textContent = "Error al escuchar. Intenta de nuevo.";
   };
 } catch (e) {
-  console.warn("❗ Reconocimiento de voz no soportado en este navegador.");
+  console.warn("Reconocimiento de voz no soportado en este navegador.");
 }
 
 function activarMicrofono() {
   if (reconocimiento) {
     reconocimiento.start();
-    document.getElementById("resultadoVoz").textContent = "🎧 Escuchando...";
+    document.getElementById("resultadoVoz").textContent = "Escuchando...";
   } else {
     alert("Este navegador no soporta reconocimiento de voz.");
   }
