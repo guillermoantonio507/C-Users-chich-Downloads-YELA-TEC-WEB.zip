@@ -1,92 +1,36 @@
 
-/* Reset básico */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+.logo-3d {
+  font-size: 6rem;
+  font-weight: 900;
+  font-family: 'Segoe UI Black', 'Arial Black', sans-serif;
+  position: relative;
+  color: rgba(220, 20, 60, 0.85); /* Rojo rubí translúcido */
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  padding: 1rem 2rem;
+  background:
+    /* Circuitos / chips simulados */
+    repeating-radial-gradient(circle at 10% 50%, rgba(255, 215, 0, 0.6) 0 2px, transparent 2px 6px),
+    repeating-linear-gradient(45deg, rgba(255, 215, 0, 0.4) 0 1px, transparent 1px 4px),
+    linear-gradient(90deg, #b22222, #8b0000);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  /* Borde dorado elegante */
+  text-shadow:
+    0 0 5px rgba(255, 215, 0, 0.8),
+    0 0 10px rgba(255, 215, 0, 0.7),
+    0 0 20px rgba(255, 215, 0, 0.6),
+    2px 2px 3px rgba(0,0,0,0.7),
+    4px 4px 5px rgba(0,0,0,0.6);
+
+  filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.6));
+  user-select: none;
+  cursor: default;
+  transition: transform 0.3s ease;
 }
 
-body {
-  font-family: "Segoe UI", sans-serif;
-  background: linear-gradient(to bottom right, #e0f7fa, #ffffff);
-  color: #333;
-  padding: 20px;
-  text-align: center;
-  min-height: 100vh;
-}
-
-/* Título principal */
-h1 {
-  font-size: 2.5rem;
-  margin-bottom: 10px;
-  color: #00796b;
-  text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
-}
-
-/* Subtítulo */
-#subtitulo {
-  font-size: 1.2rem;
-  margin: 20px 0;
-  color: #555;
-}
-
-/* Botones */
-.botones button {
-  background-color: #009688;
-  color: white;
-  border: none;
-  padding: 15px 30px;
-  font-size: 1rem;
-  margin: 10px;
-  border-radius: 12px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.botones button:hover {
-  background-color: #00796b;
-}
-
-/* Selector de idioma */
-.selector-idioma {
-  margin-top: 10px;
-}
-
-.selector-idioma select {
-  padding: 5px;
-  font-size: 1rem;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-}
-
-/* Voz */
-.voz {
-  margin-top: 30px;
-}
-
-.voz button {
-  background-color: #ff9800;
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  font-size: 1rem;
-  border-radius: 8px;
-  cursor: pointer;
-}
-
-.voz button:hover {
-  background-color: #f57c00;
-}
-
-#textoEscuchado {
-  margin-top: 15px;
-  font-style: italic;
-  color: #444;
-}
-
-/* Footer */
-footer {
-  margin-top: 40px;
-  font-size: 0.9rem;
-  color: #777;
+.logo-3d:hover {
+  transform: scale(1.1) rotateY(15deg);
+  filter: drop-shadow(4px 4px 8px rgba(0,0,0,0.9));
 }
